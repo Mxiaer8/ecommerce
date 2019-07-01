@@ -40,6 +40,7 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing
+<<<<<<< HEAD
 paths.entriesPath.forEach(({path, name}) => {
   if (!checkRequiredFiles([paths.appHtml, path])) {
     process.exit(1);
@@ -49,6 +50,11 @@ paths.entriesPath.forEach(({path, name}) => {
 // Process CLI arguments
 const argv = process.argv.slice(2);
 const writeStatsJson = argv.indexOf('--stats') !== -1;
+=======
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+  process.exit(1);
+}
+>>>>>>> 引入antd
 
 // Generate configuration
 const config = configFactory('production');
@@ -127,9 +133,27 @@ checkBrowsers(paths.appPath, isInteractive)
 
 // Create the production build and print the deployment instructions.
 function build(previousFileSizes) {
+<<<<<<< HEAD
   console.log('Creating an optimized production build...');
 
   let compiler = webpack(config);
+=======
+  // We used to support resolving modules according to `NODE_PATH`.
+  // This now has been deprecated in favor of jsconfig/tsconfig.json
+  // This lets you use absolute paths in imports inside large monorepos:
+  if (process.env.NODE_PATH) {
+    console.log(
+      chalk.yellow(
+        'Setting NODE_PATH to resolve modules absolutely has been deprecated in favor of setting baseUrl in jsconfig.json (or tsconfig.json if you are using TypeScript) and will be removed in a future major release of create-react-app.'
+      )
+    );
+    console.log();
+  }
+
+  console.log('Creating an optimized production build...');
+
+  const compiler = webpack(config);
+>>>>>>> 引入antd
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       let messages;
@@ -169,6 +193,7 @@ function build(previousFileSizes) {
         return reject(new Error(messages.warnings.join('\n\n')));
       }
 
+<<<<<<< HEAD
       const resolveArgs = {
         stats,
         previousFileSizes,
@@ -182,6 +207,13 @@ function build(previousFileSizes) {
       }
 
       return resolve(resolveArgs);
+=======
+      return resolve({
+        stats,
+        previousFileSizes,
+        warnings: messages.warnings,
+      });
+>>>>>>> 引入antd
     });
   });
 }
@@ -191,4 +223,8 @@ function copyPublicFolder() {
     dereference: true,
     filter: file => file !== paths.appHtml,
   });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 引入antd
