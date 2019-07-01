@@ -102,13 +102,8 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
       "^.+\\.module\\.(css|sass|scss)$"
     ],
-<<<<<<< HEAD
     "modulePaths": [],
-=======
-    "modulePaths": [
-      "<rootDir>/src"
-    ],
->>>>>>> 修改package.json冲突
+    "modulePaths": [],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
