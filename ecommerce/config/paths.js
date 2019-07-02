@@ -68,15 +68,11 @@ const resolveModule = (resolveFn, filePath) => {
 
   return resolveFn(`${filePath}.js`);
 };
-<<<<<<< HEAD
 const entriesPath = globby.sync([resolveApp('src') + '/*/index.js']).map(filePath => {
   let tmp = filePath.split('/');
   let name = tmp[tmp.length - 2];
   return {path: filePath, name}
 });
-=======
-
->>>>>>> 引入antd
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
@@ -84,11 +80,7 @@ module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-<<<<<<< HEAD
   // appIndexJs: resolveModule(resolveApp, 'src/index'),
-=======
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
->>>>>>> 引入antd
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
@@ -99,16 +91,9 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
-<<<<<<< HEAD
   entriesPath,
-=======
->>>>>>> 引入antd
 };
 
 
 
-<<<<<<< HEAD
 module.exports.moduleFileExtensions = moduleFileExtensions;
-=======
-module.exports.moduleFileExtensions = moduleFileExtensions;
->>>>>>> 引入antd

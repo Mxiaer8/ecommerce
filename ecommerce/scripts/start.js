@@ -146,8 +146,4 @@ checkBrowsers(paths.appPath, isInteractive)
       console.log(err.message);
     }
     process.exit(1);
-<<<<<<< HEAD
   });
-=======
-  });
->>>>>>> 引入antd
