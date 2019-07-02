@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import Nav from '../Component/Nav' 
+import './index.less'
 class PlantDatas extends Component {
     render () {
         return(
