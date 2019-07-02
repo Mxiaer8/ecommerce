@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import ReactDOM from "react-dom";
-
+import Carousels from '../Component/Carousels'
 class Home extends Component {
     render () {
         return(
-            <div>home</div>
+            <div className = "Home">
+                home
+                <Carousels></Carousels>
+            </div>
         )
     }
 }
