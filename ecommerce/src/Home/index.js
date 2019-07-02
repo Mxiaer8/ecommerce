@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from "react-dom";
 
 class Home extends Component {
@@ -8,7 +8,6 @@ class Home extends Component {
         )
     }
 }
-
 
 
 ReactDOM.render(<Home />, document.getElementById("root"));
