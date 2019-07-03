@@ -1,13 +1,13 @@
-@import '~antd/dist/antd.css';
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-size: 15px;
+    font-size  : 15px;
+    box-sizing: border-box;
 }
 
 .nav {
     .nav_top {
-        padding         : 0 250px;
+        height          : 30px;
+        padding         : 3px 250px;
         display         : flex;
         justify-content : space-between;
         align-items     : center;
@@ -16,17 +16,17 @@ body {
         .login_register {
             display        : flex;
             justify-content: center;
-            align-items: center;
+            align-items    : center;
 
             span {
-                margin: 0 5px;
+                margin : 0 5px;
                 display: flex;
 
                 i {
-                    display: flex;
-                    align-items: center;
+                    display        : flex;
+                    align-items    : center;
                     justify-content: center;
-                    margin: 0 5px;
+                    margin         : 0 5px;
                 }
             }
 
@@ -34,7 +34,31 @@ body {
     }
 }
 
+.menu {
+    height         : 100px;
+    padding        : 0 250px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+
+    .logo {
+        width          : 300px;
+        // height      : 70px;
+        margin-right   : 100px;
+
+        img {
+            max-width: 300px;
+        }
+    }
+
+    .menu_item {
+        margin-bottom: 3px;
+    }
+}
+
+@import '~antd/dist/antd.css';
 .ant-menu {
+    font-size: 17px;
     .item {
         background-color: #4c903f;
         color           : white;
@@ -46,15 +70,18 @@ body {
         margin-bottom: 0px !important;
     }
 }
-.ant-menu-item, .ant-menu-submenu-title {
+
+.ant-menu-item,
+.ant-menu-submenu-title {
     padding: 0 40px;
 }
+
 .ant-menu-horizontal>.ant-menu-submenu-active,
 .ant-menu-horizontal>.ant-menu-submenu:hover {
     border-bottom: 2px solid #4c903f;
 }
 
-.ant-menu-horizontal > .ant-menu-item > a:hover {
+.ant-menu-horizontal>.ant-menu-item>a:hover {
     color: black;
 }
 
@@ -64,6 +91,7 @@ body {
 
 .ant-menu-horizontal>.ant-menu-item-selected {
     border-bottom: 2px solid #4c903f;
+
     a {
         color: black;
     }
@@ -95,23 +123,4 @@ body {
 
 .ant-menu-horizontal {
     border-bottom: none;
-}
-.menu {
-    height: 100px;
-    padding: 0 250px;
-    display    : flex;
-    align-items: center;
-    justify-content: space-between;
-    .logo {
-         width       : 282px;
-        // height      : 70px;
-        margin-right: 150px;
-        img{
-            max-width: 282px;
-        }
-    }
-
-    .menu_item {
-        margin-bottom: 3px;
-    }
 }

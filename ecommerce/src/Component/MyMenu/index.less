@@ -1,0 +1,68 @@
+@import '~antd/dist/antd.css';
+.ant-menu {
+    font-size: 17px;
+    .item {
+        background-color: #4c903f;
+        color           : white;
+    }
+
+    .ant-menu-item:not(:last-child),
+    .ant-menu-item:not(:first-child) {
+        margin-top   : 0px !important;
+        margin-bottom: 0px !important;
+    }
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title {
+    padding: 0 40px;
+}
+
+.ant-menu-horizontal>.ant-menu-submenu-active,
+.ant-menu-horizontal>.ant-menu-submenu:hover {
+    border-bottom: 2px solid #4c903f;
+}
+
+.ant-menu-horizontal>.ant-menu-item>a:hover {
+    color: black;
+}
+
+.ant-menu-submenu-title:hover {
+    color: black;
+}
+
+.ant-menu-horizontal>.ant-menu-item-selected {
+    border-bottom: 2px solid #4c903f;
+
+    a {
+        color: black;
+    }
+}
+
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active {
+    color: black;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #1f7d0d;
+}
+
+.ant-menu-horizontal>.ant-menu-submenu-selected {
+    color        : black;
+    border-bottom: 2px solid #4c903f;
+}
+
+.ant-menu-horizontal>.ant-menu-item:hover,
+.ant-menu-horizontal>.ant-menu-item-active {
+    color        : black;
+    border-bottom: 2px solid #4c903f;
+}
+
+.ant-menu-horizontal>.ant-menu-item-selected {
+    color: black;
+}
+
+.ant-menu-horizontal {
+    border-bottom: none;
+}
