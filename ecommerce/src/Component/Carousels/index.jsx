@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Carousel, Icon } from 'antd';
-import IconFont from '../../Config/IconFont'
 import './index.less';
 
 class Carousels extends Component {
@@ -23,7 +22,7 @@ class Carousels extends Component {
     render() {
         return (
             <div className="Carousels">
-                <Carousel autoplay ref={el => (this.slider = el)} speed="500">
+                <Carousel ref={el => (this.slider = el)} speed="500">
                     <div key={1}>
                         <img className="carousel-img" src={require('../../static/images/carousel_02.jpg')}></img>
                     </div>

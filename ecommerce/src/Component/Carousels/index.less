@@ -1,21 +1,33 @@
 @import '~antd/dist/antd.css';
-
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
 //走马灯
 .Carousels {
   position: relative;
+  height: 580px;
+  background-color: grey;
 }
 
 .ant-carousel {
   .slick-slide {
     text-align : center;
     height     : 580px;
-    overflow   : hidden;
+    // overflow   : hidden;
+    position: relative;
   }
 }
 
 .carousel-img {
-  max-width: 100%;//按比例缩放图片
+  // max-width: 100%;//按比例缩放图片
   width    : 100%;
+  // max-height: 100%;
+  position: absolute;
+  top: 50%;
+  height: 580px;
+  transform: translate(0,-50%);
 }
 //定义指示点大小
 .ant-carousel .slick-dots li button {
