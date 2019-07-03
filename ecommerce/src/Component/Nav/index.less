@@ -2,32 +2,31 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-size: 15px;
+    font-size  : 15px;
 }
 
 .nav {
     .nav_top {
-        padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        padding         : 0 250px;
+        display         : flex;
+        justify-content : space-between;
+        align-items     : center;
         background-color: #eee;
 
         .login_register {
-            margin-right: 50px;
-            display: flex;
+            display        : flex;
             justify-content: center;
-            align-items: center;
+            align-items    : center;
 
             span {
-                margin: 0 5px;
+                margin : 0 5px;
                 display: flex;
 
                 i {
-                    display: flex;
-                    align-items: center;
+                    display        : flex;
+                    align-items    : center;
                     justify-content: center;
-                    margin: 0 5px;
+                    margin         : 0 5px;
                 }
             }
 
@@ -38,20 +37,25 @@ body {
 .ant-menu {
     .item {
         background-color: #4c903f;
-        color: white;
-
+        color           : white;
     }
 
     .ant-menu-item:not(:last-child),
     .ant-menu-item:not(:first-child) {
-        margin-top: 0px !important;
+        margin-top   : 0px !important;
         margin-bottom: 0px !important;
     }
 }
-
+.ant-menu-item, .ant-menu-submenu-title {
+    padding: 0 40px;
+}
 .ant-menu-horizontal>.ant-menu-submenu-active,
 .ant-menu-horizontal>.ant-menu-submenu:hover {
     border-bottom: 2px solid #4c903f;
+}
+
+.ant-menu-horizontal > .ant-menu-item > a:hover {
+    color: black;
 }
 
 .ant-menu-submenu-title:hover {
@@ -60,26 +64,55 @@ body {
 
 .ant-menu-horizontal>.ant-menu-item-selected {
     border-bottom: 2px solid #4c903f;
+
     a {
         color: black;
     }
 }
-.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-submenu-active {
+
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active {
     color: black;
 }
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
     background-color: #1f7d0d;
 }
-.ant-menu-horizontal > .ant-menu-submenu-selected {
-    color: black;
-    border-bottom: 2px solid  #4c903f;
-}
-.ant-menu-horizontal>.ant-menu-item:hover,
-.ant-menu-horizontal>.ant-menu-item-active {
-    color: black;
+
+.ant-menu-horizontal>.ant-menu-submenu-selected {
+    color        : black;
     border-bottom: 2px solid #4c903f;
 }
-.ant-menu-horizontal > .ant-menu-item-selected {
+
+.ant-menu-horizontal>.ant-menu-item:hover,
+.ant-menu-horizontal>.ant-menu-item-active {
+    color        : black;
+    border-bottom: 2px solid #4c903f;
+}
+
+.ant-menu-horizontal>.ant-menu-item-selected {
     color: black;
+}
+
+.ant-menu-horizontal {
+    border-bottom: none;
+}
+.menu {
+    height: 100px;
+    padding: 0 250px;
+    display    : flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+         width       : 282px;
+        // height      : 70px;
+        margin-right: 150px;
+        img{
+            max-width: 282px;
+        }
+    }
+
+    .menu_item {
+        margin-bottom: 3px;
+    }
 }
