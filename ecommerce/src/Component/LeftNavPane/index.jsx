@@ -8,25 +8,22 @@ class LeftNavPane extends Component {
 
     render() {
         let leftMenu = [
-            {
-                'title': '种植数据', 'url': '',
-                'content': [
-                    { 'title': '环境数据', 'key': '1' },
-                    { 'title': '果园图像', 'key': '2' },
-                    { 'title': '智慧栽培', 'key': '3' },
-                    { 'title': '智能识别', 'key': '4' },
-                    { 'title': '病虫害防治', 'key': '5' },
-                    { 'title': '更多功能', 'key': '6' }
-                ]
-            }
+            { 'title': '种植数据', 'url': '', 'content': '' , 'key': '1', 'Iconfont': 'iconshangdian1'},
+            { 'title': '环境数据', 'url': '', 'content': '' , 'key': '2', 'Iconfont': 'iconshangdian'},
+            { 'title': '果园图像', 'url': '', 'content': '' , 'key': '3', 'Iconfont': 'iconshangdian'},
+            { 'title': '智慧栽培', 'url': '', 'content': '' , 'key': '4', 'Iconfont': 'iconshangdian'},
+            { 'title': '智能识别', 'url': '', 'content': '' , 'key': '5', 'Iconfont': 'iconshangdian'},
+            { 'title': '病虫害防治', 'url': '', 'content': '' , 'key': '6', 'Iconfont': 'iconshangdian' },
+            { 'title': '更多功能', 'url': '', 'content': '' , 'key': '7', 'Iconfont': 'iconshangdian' }
+
         ]
 
 
-        return(
-            <div className = "leftNavPane">
-                 <MyMenu
-                    data = {leftMenu}
-                 ></MyMenu>
+        return (
+            <div className="leftNavPane">
+                <MyMenu
+                    data={leftMenu}
+                ></MyMenu>
             </div>
         )
     }

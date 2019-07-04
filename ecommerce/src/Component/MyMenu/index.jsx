@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './index.less'
 import { Menu } from 'antd'
-
+import IconFont from '../../Config/IconFont'
 
 const { SubMenu } = Menu;
 
@@ -31,7 +31,6 @@ class MyMenu extends Component {
                     // console.log(menus)
                     menus.map((item, index) => {
                         if (item.content) {
-                            console.log(item.content)
                             return (
                                 <SubMenu
                                     key={index}
@@ -42,7 +41,9 @@ class MyMenu extends Component {
                                     {
                                         item.content.map((menus, index) => {
                                             return (
-                                                <Menu.Item key={menus.key} className="item">{menus.title}</Menu.Item>
+                                                <Menu.Item key={menus.key} className="item">
+                                                    {menus.title}
+                                                </Menu.Item>
                                             )
                                         })
                                     }
@@ -51,7 +52,11 @@ class MyMenu extends Component {
 
                         } else {
                             return (
-                                <Menu.Item key={item.key}><a href={item.url}>{item.title}</a></Menu.Item>
+                                <Menu.Item key={item.key} className = "myMenuItem">
+                                    <a href={item.url}>
+                                        <IconFont type= {item.Iconfont}/> <span>{item.title}</span>
+                                    </a>
+                                </Menu.Item>
                             )
                         }
                     })
