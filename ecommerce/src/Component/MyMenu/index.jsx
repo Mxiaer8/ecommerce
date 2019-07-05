@@ -25,10 +25,8 @@ class MyMenu extends Component {
     render() {
         const menus = this.state.data
         return (
-            <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.state.mode}>
-
+            <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.state.mode}>    
                 {
-                    // console.log(menus)
                     menus.map((item, index) => {
                         if (item.content) {
                             return (
