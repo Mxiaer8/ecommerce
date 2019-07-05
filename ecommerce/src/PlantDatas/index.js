@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import Nav from '../Component/Nav'
 import LeftNavPane from '../Component/LeftNavPane'
+import Weather from '../Component/Weather'
+
 import './index.less'
 class PlantDatas extends Component {
     constructor(props) {
@@ -26,7 +28,9 @@ class PlantDatas extends Component {
                                 <span>您的位置:</span>
                             </div>
                         </div>
-                        <div></div>
+                        <div>
+                            <Weather></Weather>
+                        </div>
                     </div>
                 </div>
             </div>
