@@ -1,0 +1,149 @@
+@import '~antd/dist/antd.css';
+
+.ProductShow {
+    width           : 60%;
+    height          : 100%;
+    background-color: #f2f2f2;
+    position        : relative;
+    box-shadow      : 0px 0px 10px #888888;
+
+    .productImg {
+        max-width: 300px;
+    }
+
+    .productHeader {
+        display        : flex;
+        justify-content: space-between;
+        margin         : 20px 20px;
+
+        .productHeaderLeft {
+            display    : flex;
+            align-items: center;
+            font-size  : 22px;
+            color      : #282828;
+
+            .productIcon {
+                font-size   : 30px;
+                margin-right: 5px;
+            }
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .productMore {
+            color: #888888;
+        }
+
+        .productMore:hover {
+            color: #4c903f;
+        }
+    }
+
+    .ant-carousel .slick-initialized .slick-slide {
+        height: 300px;
+    }
+}
+
+.productItem {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    height          : 300px;
+    background-color: white;
+
+    .product {
+        width : 300px;
+        margin: 0 20px;
+        text-overflow: ellipsis;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+//左右箭头样式
+.leftArrow,
+.rightArrow {
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -30px;
+    width           : 60px;
+    height          : 60px;
+    border-radius   : 50%;
+    background-color: rgba(46, 53, 68, .2);
+}
+
+.leftArrow {
+    left: 30px;
+}
+
+.rightArrow {
+    right: 30px;
+}
+
+.leftArrow {
+    .b {
+        transform: translateX(6px);
+    }
+
+    b:after {
+        border-right : 2px solid rgba(255, 255, 255, .2);
+        border-bottom: 2px solid rgba(255, 255, 255, .2);
+        transform    : rotate(135deg);
+    }
+}
+
+.rightArrow {
+    .b {
+        transform: translateX(-6px);
+    }
+
+    b:after {
+        border-left: 2px solid rgba(255, 255, 255, .2);
+        border-top : 2px solid rgba(255, 255, 255, .2);
+        transform  : rotate(135deg);
+    }
+}
+
+.leftArrow:hover {
+    background-color: rgba(25, 29, 39, 0.5);
+
+    b:after {
+        border-right : 2px solid white;
+        border-bottom: 2px solid white;
+    }
+}
+
+.rightArrow:hover {
+    background-color: rgba(25, 29, 39, 0.5);
+
+    b:after {
+        border-left: 2px solid white;
+        border-top : 2px solid white;
+    }
+}
+
+.leftArrow,
+.rightArrow {
+    .b {
+        width         : 30px;
+        height        : 30px;
+        box-sizing    : border-box;
+        overflow      : visible;
+        vertical-align: middle;
+        position      : relative;
+    }
+
+    b:after {
+        content   : '';
+        box-sizing: border-box;
+        position  : absolute;
+        left      : 50%;
+        top       : 50%;
+        width     : 100%;
+        height    : 100%;
+    }
+}

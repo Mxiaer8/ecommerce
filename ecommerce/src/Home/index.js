@@ -3,6 +3,10 @@ import ReactDOM from "react-dom";
 import Carousels from '../Component/Carousels'
 import Nav from '../Component/Nav'
 import FunctionPart from '../Component/FunctionPart'
+import EnvirChart from '../Component/EnvirChart'
+import TipPart from '../Component/TipPart'
+import ProductShow from '../Component/ProductShow'
+import Footer from '../Component/Footer'
 import './index.less'
 
 class Home extends Component {
@@ -11,6 +15,11 @@ class Home extends Component {
         const secIntroduce = "将荔枝果园内的实时环境数据与农艺要求结合，提供科学的荔枝栽培管理方案";
         const thirdIntroduce = "通过计算机视觉技术，检测荔枝花期、成熟度、病虫害等信息";
         const fouthIntroduce = "学习荔枝起源、品种等知识，了解营养价值、经济价值";
+        const tipTitle = "当前管理提示";
+        const tipImg = require('../static/images/1.JPG');
+        const tipImg2 = require('../static/images/carousel_01.jpg')
+        const tipMsg = "当前是果实采收期，请分期分批采收；完成果实收货后请注意进行清园工作，包括修剪、防病虫害、全员除草、深耕施肥等工作。"
+        const tipMsg2 = "荔枝是起源于我国的世界级名果，其果皮色泽鲜艳美观，肉质细腻多汁，香甜可口，营养丰富，是滋补健体的上等补品。荔枝主要产于我国南方，古时属偏远之地，居于政治文化中心的中原，人们知道荔枝的很少，在唐朝以前，仅限于社会上层极少数人认识荔枝为广大人民所认识的。"
         return(
             <div className = "Home">
                 <Nav></Nav>
@@ -25,7 +34,19 @@ class Home extends Component {
                     <FunctionPart icontype="iconicon-test1" title="智能识别" introduce={thirdIntroduce}></FunctionPart>
                     <FunctionPart icontype="iconlizhi" title="荔枝文化" introduce={fouthIntroduce}></FunctionPart>
                 </div>
-                <div></div>
+                <div className="environmentData">
+                    <div className="envirDataContent">
+                        <EnvirChart></EnvirChart>
+                        <TipPart tipIcon="icontishi" tipTitle={tipTitle} tipImg={tipImg} tipMsg={tipMsg}></TipPart>
+                    </div>
+                </div>
+                <div className="productMessage">
+                    <div className="productMsgContent">
+                        <ProductShow></ProductShow>
+                        <TipPart tipIcon="iconshu" tipTitle="荔枝文化" tipImg={tipImg2} tipMsg={tipMsg2}></TipPart>
+                    </div>
+                </div>
+                <Footer></Footer>
                 
             </div>
         )
