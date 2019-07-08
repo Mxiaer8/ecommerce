@@ -2,6 +2,135 @@ import React, { Component } from 'react'
 import './index.less'
 
 
+window.getCity = function () {
+    function city(result) {
+        //去掉城市名后的"市"
+        var city = result.name.substring(0, result.name.length - 1);
+        //请求当前城市的天气数据
+        jsonp(createUrl(city)[0]);
+        jsonp(createUrl(city)[1]);
+    }
+    var cityName = new window.BMap.LocalCity();
+    console.log(cityName)
+    cityName.get(city);
+}
+
+// 数据请求函数
+function jsonp(url) {
+    var script = document.createElement('script');
+    script.src = url;
+    document.body.insertBefore(script, document.body.firstChild);
+    document.body.removeChild(script);
+}
+
+//数据请求成功回调函数，用于将获取到的数据放入页面相应位置
+window.getWeather = function (response) {
+    let city = document.getElementsByClassName('city_weather')[0]
+    var data = response.result;
+    console.log(data)
+    if (data) {
+        city.innerHTML = data[0].citynm;
+        var oDiv = document.getElementsByClassName('box');
+        for (var i = 0; i < oDiv.length; i++) {
+            var oSpan = oDiv[i].getElementsByClassName('info');
+            oSpan[1].innerHTML = data[i].week;
+            oSpan[2].innerHTML = data[i].weather;
+            oSpan[3].innerHTML = data[i].temperature;
+        }
+        var aDiv = document.getElementsByClassName('future_box');
+        for (var i = 0; i < aDiv.length; i++) {
+            var aSpan = aDiv[i].getElementsByClassName('future_info');
+            aSpan[0].innerHTML = data[i + 3].days;
+            aSpan[1].innerHTML = data[i + 3].weather;
+            aSpan[2].innerHTML = data[i + 3].temperature;
+        }
+    }
+
+
+    //根据返回数据，替换不同天气图片
+    changeImg(response);
+}
+
+//根据获取到的数据更改页面中相应的图片
+function changeImg(data) {
+    if (data) {
+        var aImg = document.getElementById('future_container').getElementsByClassName('weather_img');
+        for (var j = 0; j < aImg.length; j++) {
+            var weatherId = data.result[j].weatid;
+            chooseImg(weatherId, aImg[j]);
+        }
+    }
+
+}
+
+//选择图片
+function chooseImg(id, index) {
+    switch (id) {
+        case '1':
+            index.src = require('../../static/images/weather_icon/1.png');
+            break;
+        case '2':
+            index.src = require('../../static/images/weather_icon/2.png');
+            break;
+        case '3':
+            index.src = require('../../static/images/weather_icon/3.png');
+            break;
+        case '4':
+        case '5':
+        case '6':
+        case '8':
+        case '9':
+        case '10':
+        case '11':
+        case '12':
+        case '13':
+        case '20':
+        case '22':
+        case '23':
+        case '24':
+        case '25':
+        case '26':
+            index.src = require('../../static/images/weather_icon/4.png');
+            break;
+        case '7':
+            index.src = require('../../static/images/weather_icon/6.png');
+            break;
+        case '14':
+        case '15':
+        case '16':
+        case '17':
+        case '18':
+        case '27':
+        case '28':
+        case '29':
+            index.src = require('../../static/images/weather_icon/5.png');
+            break;
+        case '19':
+        case '21':
+        case '30':
+        case '31':
+        case '32':
+        case '33':
+            index.src = require('../../static/images/weather_icon/7.png');
+            break;
+        default:
+            index.src = require('../../static/images/weather_icon/8.png');
+    }
+}
+
+//根据城市名创建请求数据及url
+function createUrl() {
+    var cityName = '';
+    if (arguments.length == 0) {
+        cityName = document.getElementById('text').value;
+    } else {
+        cityName = arguments[0];
+    }
+    var urls = [];
+    urls[0] = 'http://api.k780.com/?app=weather.future&weaid=1&&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json&jsoncallback=getWeather&weaid=' + encodeURI(cityName);
+    return urls;
+}
+
 
 class Weather extends Component {
     constructor(props) {
@@ -10,214 +139,76 @@ class Weather extends Component {
 
     componentDidMount() {
         //调用jsonp函数请求当前所在城市
-        this.jsonp('https://api.map.baidu.com/api?v=2.0&ak=Dv1NMU23dh1sGS9n2tUouDEYY96Dfzh3&s=1&callback=getCity');
-        //请求天气车数
-        let that = this
+        jsonp('https://api.map.baidu.com/api?v=2.0&ak=Dv1NMU23dh1sGS9n2tUouDEYY96Dfzh3&s=1&callback=getCity');
+        // 请求天气车数据
         this.refs.btn.addEventListener('click', function () {
-            that.jsonp(that.createUrl()[0]);
-            that.jsonp(that.createUrl()[1]);
+            jsonp(createUrl()[0]);
+            jsonp(createUrl()[1]);
         });
         this.refs.text.addEventListener('keydown', function (e) {
             if (e.keyCode == 13) {
-                that.jsonp(that.createUrl()[0]);
-                that.jsonp(that.createUrl()[1]);
+                jsonp(createUrl()[0]);
+                jsonp(createUrl()[1]);
             }
         });
 
 
     }
 
-    getCity() {
-        console.log('result')
-        function city(result) {
-            //去掉城市名后的"市"
-            
-            var city = result.name.substring(0, result.name.length - 1);
-            //请求当前城市的天气数据
-            let that = this
-            console.log(this)
-            this.jsonp(that.createUrl(city)[0]);
-            this.jsonp(that.createUrl(city)[1]);
-        }
-        var cityName = new window.BMap.LocalCity();
-        cityName.get(city);
-    }
 
-    // 数据请求函数
-    jsonp(url) {
-        var script = document.createElement('script');
-        script.src = url;
-        document.body.insertBefore(script, document.body.firstChild);
-        document.body.removeChild(script);
-    }
-
-    //数据请求成功回调函数，用于将获取到的数据放入页面相应位置
-    getWeather(response) {
-        var oSpan = document.getElementsByClassName('info');
-        var data = response.result;
-        oSpan[0].innerHTML = data[0].citynm;
-        oSpan[1].innerHTML = data[0].days;
-        oSpan[2].innerHTML = data[0].week;
-        oSpan[3].innerHTML = data[0].weather;
-        oSpan[4].innerHTML = data[0].temperature;
-        oSpan[5].innerHTML = data[0].winp;
-        oSpan[6].innerHTML = data[0].wind;
-
-        var aDiv = document.getElementsByClassName('future_box');
-        for (var i = 0; i < aDiv.length; i++) {
-            var aSpan = aDiv[i].getElementsByClassName('future_info');
-            aSpan[0].innerHTML = data[i + 1].days;
-            aSpan[1].innerHTML = data[i + 1].week;
-            aSpan[2].innerHTML = data[i + 1].weather;
-            aSpan[3].innerHTML = data[i + 1].temperature;
-        }
-        //根据返回数据，替换不同天气图片
-        this.changeImg(response);
-    }
-
-    getTodayWeather(response) {
-        var oSpan = document.getElementsByClassName('info');
-        var data = response.results;
-        oSpan[7].innerHTML = data[0].pm25;
-        oSpan[8].innerHTML = data[0].index[4].zs;
-        oSpan[9].innerHTML = data[0].index[1].zs;
-        oSpan[10].innerHTML = data[0].index[2].zs;
-        oSpan[11].innerHTML = data[0].index[0].zs;
-    }
-
-    //根据获取到的数据更改页面中相应的图片
-    changeImg(data) {
-        var firstImg = document.getElementsByTagName("img")[0];
-        var firstWeatherId = data.result[0].weatid;
-        this.chooseImg(firstWeatherId, firstImg);
-
-        var aImg = document.getElementById('future_container').getElementsByTagName('img');
-        for (var j = 0; j < aImg.length; j++) {
-            var weatherId = data.result[j + 1].weatid;
-            this.chooseImg(weatherId, aImg[j]);
-        }
-    }
-
-    //选择图片
-    chooseImg(id, index) {
-        switch (id) {
-            case '1':
-                index.src = require('../../static/images/weather_icon/1.png');
-                break;
-            case '2':
-                index.src = require('../../static/images/weather_icon/2.png');
-                break;
-            case '3':
-                index.src = require('../../static/images/weather_icon/3.png');
-                break;
-            case '4':
-            case '5':
-            case '6':
-            case '8':
-            case '9':
-            case '10':
-            case '11':
-            case '12':
-            case '13':
-            case '20':
-            case '22':
-            case '23':
-            case '24':
-            case '25':
-            case '26':
-                index.src = require('../../static/images/weather_icon/4.png');
-                break;
-            case '7':
-                index.src = require('../../static/images/weather_icon/6.png');
-                break;
-            case '14':
-            case '15':
-            case '16':
-            case '17':
-            case '18':
-            case '27':
-            case '28':
-            case '29':
-                index.src = require('../../static/images/weather_icon/5.png');
-                break;
-            case '19':
-            case '21':
-            case '30':
-            case '31':
-            case '32':
-            case '33':
-                index.src = require('../../static/images/weather_icon/7.png');
-                break;
-            default:
-                index.src = require('../../static/images/weather_icon/8.png');
-        }
-    }
-
-    //根据城市名创建请求数据及url
-    createUrl() {
-        var cityName = '';
-        if (arguments.length == 0) {
-            cityName = document.getElementById('text').value;
-        } else {
-            cityName = arguments[0];
-        }
-        var urls = [];
-        urls[0] = 'https://sapi.k780.com/?app=weather.future&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json&jsoncallback=getWeather&weaid=' + encodeURI(cityName);
-        urls[1] = 'https://api.map.baidu.com/telematics/v3/weather?output=json&ak=FK9mkfdQsloEngodbFl4FeY3&callback=getTodayWeather&location=' + encodeURI(cityName);
-        return urls;
-    }
 
     render() {
         return (
             <div>
                 <header>
-                    <h1>WEATHER</h1>
+                    <span className="timeData">实时数据</span>
                     <div id="weather_search">
                         <span><input id="text" type="text" ref="text" placeholder="请输入您要查询的城市" /></span>
                         <span><input id="btn" type="button" ref="btn" value=" 查询天气" /></span>
                     </div>
                 </header>
                 <section>
-                    <div id="today_container">
-                        <div>
-                            <img src={require('../../static/images/weather_icon/1.png')} alt="今日天气" />
-                        </div>
-                        <div>
-                            <div className="main_info"><span className="info">城市</span>|<span className="info">201X-XX-XX</span>|<span className="info">星期X</span>|<span className="info">---</span> </div>
-                            <div className="more_info">今日温度：<span className="info">-----</span>风力：<span className="info">-----</span>风向：<span className="info">-----</span>PM2.5：<span className="info">--</span></div>
-                            <div className="more_info">紫外线强度：<span className="info">---</span>洗车指数：<span className="info">---</span>感冒指数：<span className="info">---</span>穿衣指数：<span className="info">---</span></div>
-                        </div>
-                    </div>
+
                     <div id="future_container">
-                        <div className="future_box">
-                            <img src={require('../../static/images/weather_icon/1.png')} alt="天气" />
-                            <span className="future_info">201X-XX-XX</span>
-                            <span className="future_info">星期X</span>
-                            <span className="future_info">--</span><span className="future_info">12-16℃</span>
+                        <span className="city_weather"></span>
+                        <div className="box">
+                            <span>
+                                <p className="info">今天</p>
+                                <p className="info">星期X</p>
+                            </span>
+                            <img className="weather_img" alt="天气" />
+                            <span className="info">--</span>
+                            <span className="info">12-16℃</span>
+                        </div>
+                        <div className="box">
+                            <span>
+                                <p className="info">明天</p>
+                                <p className="info">星期X</p>
+                            </span>
+                            <img className="weather_img" alt="天气" />
+                            <span className="info">--</span>
+                            <span className="info">12-16℃</span>
+                        </div>
+                        <div className="box">
+                            <span>
+                                <p className="info">后天</p>
+                                <p className="info">星期X</p>
+                            </span>
+                            <img className="weather_img" alt="天气" />
+                            <span className="info">--</span>
+                            <span className="info">12-16℃</span>
                         </div>
                         <div className="future_box">
-                            <img src={require('../../static/images/weather_icon/3.png')} alt="天气" />
                             <span className="future_info">201X-XX-XX</span>
-                            <span className="future_info">星期X</span>
-                            <span className="future_info">--</span><span className="future_info">12-16℃</span>
+                            <img className="weather_img" alt="天气" />
+                            <span className="future_info">--</span>
+                            <span className="future_info">12-16℃</span>
                         </div>
                         <div className="future_box">
-                            <img src={require('../../static/images/weather_icon/2.png')} alt="天气" />
                             <span className="future_info">201X-XX-XX</span>
-                            <span className="future_info">星期X</span>
-                            <span className="future_info">--</span><span className="future_info">12-16℃</span>
-                        </div>
-                        <div className="future_box">
-                            <img src={require('../../static/images/weather_icon/4.png')} alt="天气" />
-                            <span className="future_info">201X-XX-XX</span>
-                            <span className="future_info">星期X</span>
-                            <span className="future_info">--</span><span className="future_info">12-16℃</span>
-                        </div>
-                        <div className="future_box">
-                            <img src={require('../../static/images/weather_icon/4.png')} alt="天气" />
-                            <span className="future_info">201X-XX-XX</span>
-                            <span className="future_info">星期X</span>
-                            <span className="future_info">-</span><span className="future_info">12-16℃</span>
+                            <img className="weather_img" alt="天气" />
+                            <span className="future_info">--</span>
+                            <span className="future_info">12-16℃</span>
                         </div>
                     </div>
                 </section>
@@ -225,6 +216,5 @@ class Weather extends Component {
         )
     }
 }
-
 
 export default Weather
