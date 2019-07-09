@@ -1,130 +1,183 @@
-body,div,h1,h2,h3,h4,h5,h6,input,header,main,ul,li,footer,p,span,section{
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+header,
+main,
+ul,
+li,
+footer,
+p,
+span,
+section {
     padding: 0;
-    margin: 0;
+    margin : 0;
 }
-html,body{
-    height: 100%;
+
+html,
+body {
+    height   : 100%;
     min-width: 960px;
 }
-body{
-    font-size: 13px;
-    font-family: "microsoft yahei";
+
+body {
+    font-size              : 13px;
+    font-family            : "microsoft yahei";
     -webkit-background-size: 100%;
-    background-size: 100%;
-    color: #222;
+    background-size        : 100%;
+    color                  : #222;
 }
-header{
-    height: 50px;
+
+header {
+    height         : 50px;
     // padding-left: 80px;
-    padding: 0px 30px;
-    display: flex;
+    padding        : 0px 30px;
+    display        : flex;
     justify-content: space-between;
-    align-items: center;
-    // background: rgba(100, 100, 100, 0.6);
+    align-items    : center;
+    // background  : rgba(100, 100, 100, 0.6);
 }
-.timeData {
-    font-size: 24px;
-}
-h1{
+
+
+
+h1 {
     padding-right: 30px;
-    line-height: 50px;
-    font-size: 30px;
-    float: left;
+    line-height  : 50px;
+    font-size    : 30px;
+    float        : left;
 }
-#weather_search span{
+
+#weather_search span {
     height: 30px;
-    float: left;
+    float : left;
 }
-#text{
-    border: 1px solid #eee !important;
-    padding: 0 6px 0 6px;
+
+#text {
+    border    : 1px solid #eee !important;
+    padding   : 0 6px 0 6px;
     background: #fff;
-    font-size: 14px;
-    width: 240px;
-    height: 30px;
-    border: none;
-    outline: none;
+    font-size : 14px;
+    width     : 240px;
+    height    : 30px;
+    border    : none;
+    outline   : none;
 }
-#btn{
-    width: 70px;
-    height: 30px;
-    border: none;
-    background: #eeeeee;;
-    color: #333;
+
+#btn {
+    width     : 70px;
+    height    : 30px;
+    border    : none;
+    background: #eeeeee;
+    ;
+    color  : #333;
     outline: none;
-    cursor: pointer;
+    cursor : pointer;
 }
-#btn:hover{
+
+#btn:hover {
     background: #d6d2d2;
 }
-// section{
-//     padding-top: 90px;
-// }
-#today_container{
-    width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(100,100,100,0.3);
-    overflow: hidden;
+
+section {
+    display    : flex;
+    align-items: center;
 }
+
+#today_container {
+    width     : 900px;
+    margin    : 0 auto;
+    padding   : 20px;
+    background: rgba(100, 100, 100, 0.3);
+    overflow  : hidden;
+}
+
 #today_container div img {
     margin: 0 50px 0 40px;
-    float: left;
+    float : left;
 }
- .main_info{
-    font-size: 24px;
+
+.main_info {
+    font-size    : 24px;
     margin-bottom: 10px;
 }
- .main_info span{
+
+.main_info span {
     margin: 0 15px;
 }
- .main_info span:first-child{
+
+.main_info span:first-child {
     margin-left: 0;
 }
- .more_info {
+
+.more_info {
     margin-top: 3px;
-    font-size: 16px;
+    font-size : 16px;
 }
- .more_info span{
+
+.more_info span {
     margin: 0 15px 0 0;
 }
-#future_container{
-    margin: 0px auto;
-    padding: 0 30px;
-    display: flex;
+
+#future_container {
+    margin         : 0px auto;
+    display        : flex;
     justify-content: space-between;
-    align-items: center;
-    // width: 950px;
-    text-align: center;
-    overflow: hidden;
+    align-items    : center;
+    // width       : 950px;
+    text-align     : center;
+    overflow       : hidden;
+
     .city_weather {
-        font-size: 20px;
+        font-size  : 16px;
+        font-weight: 600;
+        width      : 60px;
     }
+
+
 }
-#future_container div{
-    float: left;
-    width: 100px;
+
+.other_data {
+    padding        : 0 80px;
+    display        : flex;
+    justify-content: space-around;
+    align-items    : center;
+}
+
+#future_container div {
+    float  : left;
+    width  : 100px;
     padding: 20px 0;
+
     // background: rgba(100, 100, 100, 0.3);
     img {
         width: 80px;
     }
 }
-#future_container div:hover{
-    background: rgba(200,200,200,0.5);
+
+#future_container div:hover {
+    background: rgba(200, 200, 200, 0.5);
 }
-#future_container div span{
+
+#future_container div span {
     display: block;
 }
+
 #future_container div span p {
     display: inline;
 }
-footer{
+
+footer {
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    bottom  : 0;
+    width   : 100%;
 }
-footer div{
-    width: 175px;
+
+footer div {
+    width : 175px;
     margin: 0 auto;
 }

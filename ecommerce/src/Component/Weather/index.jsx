@@ -1,18 +1,21 @@
+/**
+ * 此组件代码需重新整理
+ */
+
+
 import React, { Component } from 'react'
 import './index.less'
 
-
 window.getCity = function () {
-    function city(result) {
+    function city() {
         //去掉城市名后的"市"
-        var city = result.name.substring(0, result.name.length - 1);
+        var city = '惠阳';
         //请求当前城市的天气数据
+        console.log(city)
         jsonp(createUrl(city)[0]);
         jsonp(createUrl(city)[1]);
     }
-    var cityName = new window.BMap.LocalCity();
-    console.log(cityName)
-    cityName.get(city);
+    city()
 }
 
 // 数据请求函数
@@ -25,11 +28,8 @@ function jsonp(url) {
 
 //数据请求成功回调函数，用于将获取到的数据放入页面相应位置
 window.getWeather = function (response) {
-    let city = document.getElementsByClassName('city_weather')[0]
     var data = response.result;
-    console.log(data)
     if (data) {
-        city.innerHTML = data[0].citynm;
         var oDiv = document.getElementsByClassName('box');
         for (var i = 0; i < oDiv.length; i++) {
             var oSpan = oDiv[i].getElementsByClassName('info');
@@ -140,19 +140,6 @@ class Weather extends Component {
     componentDidMount() {
         //调用jsonp函数请求当前所在城市
         jsonp('https://api.map.baidu.com/api?v=2.0&ak=Dv1NMU23dh1sGS9n2tUouDEYY96Dfzh3&s=1&callback=getCity');
-        // 请求天气车数据
-        this.refs.btn.addEventListener('click', function () {
-            jsonp(createUrl()[0]);
-            jsonp(createUrl()[1]);
-        });
-        this.refs.text.addEventListener('keydown', function (e) {
-            if (e.keyCode == 13) {
-                jsonp(createUrl()[0]);
-                jsonp(createUrl()[1]);
-            }
-        });
-
-
     }
 
 
@@ -160,17 +147,12 @@ class Weather extends Component {
     render() {
         return (
             <div>
-                <header>
-                    <span className="timeData">实时数据</span>
-                    <div id="weather_search">
-                        <span><input id="text" type="text" ref="text" placeholder="请输入您要查询的城市" /></span>
-                        <span><input id="btn" type="button" ref="btn" value=" 查询天气" /></span>
-                    </div>
-                </header>
                 <section>
-
                     <div id="future_container">
-                        <span className="city_weather"></span>
+                        <div className="city_weather">
+                            <p>惠东</p>
+                            <p>天气</p>
+                        </div>
                         <div className="box">
                             <span>
                                 <p className="info">今天</p>
