@@ -61,3 +61,48 @@ body {
         background: linear-gradient(#135a91,#1a78c2,#2196F3);
     }
 }
+
+.leftNavPane {
+    width: 250px;
+
+    .ant-menu {
+        background-color: #dee4dd;
+    }
+
+    .ant-menu-inline .ant-menu-item {
+        font-size: 18px;
+        height: 57px;
+        line-height: 57px;
+    }
+
+    .ant-menu-inline li:nth-child(1) {
+        background-color: #4c903f;
+        color: white;
+    }
+
+    .ant-menu-item-selected {
+        background-color: #b4c5b2 !important;
+        color: black !important;
+    }
+    .ant-menu-inline li:nth-child(1)  {
+        color: white;
+    }
+
+    .ant-menu-item::after {
+        border-right: 3px solid #b4c5b2;
+    }
+
+    .ant-menu-inline li  {
+        display: flex;
+        align-items: center;
+    }
+
+    .ant-menu-item:hover {
+        color: black;
+    }
+
+    .ant-menu-item:hover,
+    .ant-menu-item-active {
+        background-color: #b4c5b2;
+    }
+}
