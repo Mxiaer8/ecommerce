@@ -127,7 +127,7 @@ function createUrl() {
         cityName = arguments[0];
     }
     var urls = [];
-    urls[0] = 'http://api.k780.com/?app=weather.future&weaid=1&&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json&jsoncallback=getWeather&weaid=' + encodeURI(cityName);
+    urls[0] = 'http://api.k780.com/?app=weather.future&weaid=1&&appkey=43682&sign=c6b2e40531337bcbaa719bbfa412ad0c&format=json&jsoncallback=getWeather&weaid=' + encodeURI(cityName);
     return urls;
 }
 
