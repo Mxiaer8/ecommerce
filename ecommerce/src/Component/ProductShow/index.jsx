@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Carousel } from 'antd';
 import IconFont from '../../Config/IconFont'
 import './index.less';
+import '../PartHeader'
+import PartHeader from '../PartHeader';
 
+//首页中小轮播：展示商品
 class ProductShow extends Component {
     constructor(props) {
         super(props);
@@ -23,14 +26,7 @@ class ProductShow extends Component {
     render() {
         return (
             <div className="ProductShow">
-                <div className="productHeader">
-                    <div className="productHeaderLeft">
-                        <IconFont className="productIcon" type="iconliebiao"></IconFont>
-                        <p>荔枝产品</p>
-                    </div>
-                    <p className="productMore">查看更多>></p>
-                </div>
-                
+                <PartHeader headerIconType="iconliebiao" headerTitle="荔枝产品"></PartHeader>               
                 <Carousel autoplay ref={el => (this.slider = el)} speed="500" className="productCarousel">
                     <div key={1}>
                         <div className="productItem">

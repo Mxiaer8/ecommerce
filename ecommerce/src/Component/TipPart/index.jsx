@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './index.less';
-import IconFont from '../../Config/IconFont';
+import '../PartHeader';
+import PartHeader from '../PartHeader';
 
+//首页中“荔枝文化”及“提示”等板块
 class TipPart extends Component {
     constructor(props) {
         super(props);
@@ -15,13 +17,7 @@ class TipPart extends Component {
         const { tipIcon, tipTitle, tipImg, tipMsg } = this.props;
         return (
             <div className="TipPart">
-                <div className="tipHeader">
-                    <div className="tipHeaderLeft">
-                        <IconFont type={tipIcon} className="tipIcon"></IconFont>
-                        <p>{tipTitle}</p>
-                    </div>
-                    <p className="tipMore">查看更多>></p>
-                </div>
+                <PartHeader headerIconType={tipIcon} headerTitle={tipTitle}></PartHeader>
                 <div className="tipContent">
                     <img className="tipImg" src={tipImg}></img>
                     <p className="tipMsg">{tipMsg}</p>

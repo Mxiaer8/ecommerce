@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import Carousels from '../Component/Carousels'
 import Nav from '../Component/Nav'
 import FunctionPart from '../Component/FunctionPart'
-import EnvirChart from '../Component/EnvirChart'
 import TipPart from '../Component/TipPart'
 import ProductShow from '../Component/ProductShow'
 import Footer from '../Component/Footer'
+import LineChart from '../Component/LineChart'
 import './index.less'
 
+//首页
 class Home extends Component {
     render () {
         const firstIntroduce = "通过布置在果园内的无线传感器采集数据，并传输至云端服务器，构建荔枝生长环境数据库"
@@ -22,8 +23,11 @@ class Home extends Component {
         const tipMsg2 = "荔枝是起源于我国的世界级名果，其果皮色泽鲜艳美观，肉质细腻多汁，香甜可口，营养丰富，是滋补健体的上等补品。荔枝主要产于我国南方，古时属偏远之地，居于政治文化中心的中原，人们知道荔枝的很少，在唐朝以前，仅限于社会上层极少数人认识荔枝为广大人民所认识的。"
         return(
             <div className = "Home">
+                {/* 导航栏 */}
                 <Nav></Nav>
+                {/* 大轮播图 */}
                 <Carousels></Carousels>
+                {/* 第一板块：四个功能板块 */}
                 <div className="info">
                     <p className="title">荔枝生产物联网平台</p>
                     <p>全方位检测荔枝生长过程，了解荔枝产品、学习荔枝文化</p>
@@ -34,12 +38,14 @@ class Home extends Component {
                     <FunctionPart icontype="iconicon-test1" title="智能识别" introduce={thirdIntroduce}></FunctionPart>
                     <FunctionPart icontype="iconlizhi" title="荔枝文化" introduce={fouthIntroduce}></FunctionPart>
                 </div>
+                {/* 第二板块：折线图 + 提示板块 */}
                 <div className="environmentData">
                     <div className="envirDataContent">
-                        <EnvirChart></EnvirChart>
+                        <LineChart></LineChart>
                         <TipPart tipIcon="icontishi" tipTitle={tipTitle} tipImg={tipImg} tipMsg={tipMsg}></TipPart>
                     </div>
                 </div>
+                {/* 第三板块：小轮播图 + 文化板块*/}
                 <div className="productMessage">
                     <div className="productMsgContent">
                         <ProductShow></ProductShow>

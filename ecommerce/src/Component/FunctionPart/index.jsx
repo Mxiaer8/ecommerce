@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import IconFont from '../../Config/IconFont';
 import './index.less'
 
+//首页中“自动监测”、“智慧管理”等板块
 class FunctionPart extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +13,6 @@ class FunctionPart extends Component {
 
     render() {
         const {icontype,title,introduce} = this.props;
-        console.log(title);
         return (
             <div className="FunctionPart">
                 <IconFont type={icontype} className="icon-font"></IconFont>
@@ -24,9 +24,5 @@ class FunctionPart extends Component {
         )
     }
 }
-
-// functionIcon.prototypes = {
-//     iconType
-// }
 
 export default FunctionPart
