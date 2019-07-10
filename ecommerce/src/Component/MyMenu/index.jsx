@@ -16,7 +16,7 @@ class MyMenu extends Component {
     }
 
     handleClick = e => {
-        console.log('click ', e);
+        this.props.getClick(e)
         this.setState({
             current: e.key,
         });
@@ -25,7 +25,7 @@ class MyMenu extends Component {
     render() {
         const menus = this.state.data
         return (
-            <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.state.mode}>    
+            <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode={this.state.mode}>
                 {
                     menus.map((item, index) => {
                         if (item.content) {
@@ -50,10 +50,8 @@ class MyMenu extends Component {
 
                         } else {
                             return (
-                                <Menu.Item key={item.key} className = "myMenuItem">
-                                    <a href={item.url}>
-                                        <IconFont type= {item.Iconfont}/> <span>{item.title}</span>
-                                    </a>
+                                <Menu.Item key={item.key} className="myMenuItem">
+                                    <IconFont type={item.Iconfont} /> <span>{item.title}</span>
                                 </Menu.Item>
                             )
                         }
