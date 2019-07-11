@@ -5,7 +5,7 @@ import Weather from '../Component/Weather'
 import Thermometer from 'react-thermometer-component'
 import MyMenu from '../Component/MyMenu'
 import LineChart from '../Component/LineChart'
- 
+
 import './index.less'
 class PlantDatas extends Component {
     constructor(props) {
@@ -22,6 +22,7 @@ class PlantDatas extends Component {
     // 获取用户点击左部导航栏的结果
     getClick(e) {
         const title = e.domEvent.target.innerText
+        if (e.key === '0') return
         this.setState({
             show: e.key,
             current_position: title
@@ -63,7 +64,7 @@ class PlantDatas extends Component {
                             </div>
                         </div>
 
-                        <div className={this.state.show === '1' || this.state.show === '0' ? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === '1'? 'paneShow' : 'paneHide'}>
                             <div className="environmental_data" >
                                 <div>
                                     <span className="timeData">实时数据</span>
@@ -100,10 +101,18 @@ class PlantDatas extends Component {
                                     <div><span>CO2浓度： </span>{this.state.co2_data}</div>
                                 </div>
                                 <div className='three_days_tempAndhumidity'>
-                                    <div className="temp">
+                                    <div className='temp'>
                                         <LineChart></LineChart>
                                     </div>
                                     <div className='humidity'>
+                                        <LineChart></LineChart>
+                                    </div>
+                                </div>
+                                <div className='three_day_waterAndSun'>
+                                    <div className='water'>
+                                        <LineChart></LineChart>
+                                    </div>
+                                    <div className='sun'>
                                         <LineChart></LineChart>
                                     </div>
                                 </div>
@@ -111,6 +120,11 @@ class PlantDatas extends Component {
 
                         </div>
 
+                        <div className={this.state.show === '2'?'paneShow' : 'paneHide'}>
+                            <div className = 'orchard_data'>
+                                 
+                            </div>
+                        </div>
 
 
 

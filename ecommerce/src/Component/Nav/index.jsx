@@ -57,6 +57,9 @@ class Nav extends Component {
                                 <Menu.Item key="setting:6" className="item">病虫害防治</Menu.Item>
                                 <Menu.Item key="setting:7" className="item">更多功能</Menu.Item>
                             </SubMenu>
+                            <Menu.Item key="garden">
+                                <a href=''>虚拟果园</a>
+                            </Menu.Item>
                             <SubMenu
                                 title={
                                     <span className="submenu-title-wrapper plantDatas">荔枝产品</span>
