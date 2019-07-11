@@ -12,7 +12,8 @@ class About extends Component {
             <div className="About">
                 <Nav></Nav>
                 <Carousel></Carousel>
-                <LineChart chartWidth="500px"></LineChart>
+                <LineChart chartId="main" chartWidth="60%" chartHeight="" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
+                <LineChart chartId="sec" chartWidth="60%" chartHeight="" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                 i am a about;why not?
             </div>
         )

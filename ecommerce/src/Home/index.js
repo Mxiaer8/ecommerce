@@ -43,7 +43,7 @@ class Home extends Component {
                 {/* 第二板块：折线图 + 提示板块 */}
                 <div className="environmentData">
                     <div className="envirDataContent">
-                        <LineChart chartWidth="60%" chartHeight="" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
+                        <LineChart chartId="main" chartWidth="60%" chartHeight="" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                         <TipPart tipIcon="icontishi" tipTitle={tipTitle} tipImg={tipImg} tipMsg={tipMsg}></TipPart>
                     </div>
                 </div>
