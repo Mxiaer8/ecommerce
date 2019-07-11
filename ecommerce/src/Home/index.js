@@ -16,6 +16,7 @@ class Home extends Component {
         const secIntroduce = "将荔枝果园内的实时环境数据与农艺要求结合，提供科学的荔枝栽培管理方案";
         const thirdIntroduce = "通过计算机视觉技术，检测荔枝花期、成熟度、病虫害等信息";
         const fouthIntroduce = "学习荔枝起源、品种等知识，了解营养价值、经济价值";
+        const fifthIntroduce = "提供虚拟漫游体验，模拟真实果园环境，足不出户即可体验荔枝园观光";
         const tipTitle = "当前管理提示";
         const tipImg = require('../static/images/1.JPG');
         const tipImg2 = require('../static/images/carousel_01.jpg')
@@ -34,6 +35,7 @@ class Home extends Component {
                 </div>
                 <div className="functionPart">
                     <FunctionPart icontype="iconzidongjiancezhan" title="自动监测" introduce={firstIntroduce}></FunctionPart>
+                    <FunctionPart icontype="iconguanguanglvyou" title="虚拟果园" introduce={fifthIntroduce}></FunctionPart>
                     <FunctionPart icontype="iconwuliudanao_o" title="智慧管理" introduce={secIntroduce}></FunctionPart>
                     <FunctionPart icontype="iconicon-test1" title="智能识别" introduce={thirdIntroduce}></FunctionPart>
                     <FunctionPart icontype="iconlizhi" title="荔枝文化" introduce={fouthIntroduce}></FunctionPart>

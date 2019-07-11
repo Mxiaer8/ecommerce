@@ -25,6 +25,7 @@ class LineChart extends Component {
             return item[1];
         });
         myChart.setOption({
+            color: ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
             visualMap: [{
                 show: false,
                 type: 'continuous',
@@ -69,7 +70,23 @@ class LineChart extends Component {
             series: [{
                 type: 'line',
                 showSymbol: false,
-                data: valueList
+                data: valueList,
+                itemStyle : {  
+                    normal : {  
+                        color: 'black',
+                        lineStyle: {        // 系列级个性化折线样式
+                            width: 2,
+                            type: 'solid',
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'green'
+                            }, {
+                                offset: 1,
+                                color: 'red'
+                            }]),//线条渐变色
+                    }
+                }  
+                },  
             }]
         });
 }
@@ -78,7 +95,7 @@ render() {
     return (
         <div className="LineChart">
             <PartHeader headerIconType="iconqushi" headerTitle="环境数据变化情况"></PartHeader>
-            <div id="main" style={{ width: 720, height: 400 }}></div>
+            <div id="main" style={{ width: '100%', height: 400 }}></div>
         </div>
     )
 }
