@@ -16,7 +16,8 @@ class LineChart extends Component {
             chartHeight: this.props.chartHeight,
             chartIcon: this.props.iconType,
             headerTitle: this.props.headerTitle,
-            chartId: this.props.chartId
+            chartId: this.props.chartId,
+            lineChartHeight: this.props.lineChartHeight
         }
     }
 
@@ -102,7 +103,7 @@ render() {
     return (
         <div className="LineChart" style={{ width: this.state.chartWidth, height: this.state.chartHeight }}>
             <PartHeader headerIconType={this.state.chartIcon} headerTitle={this.state.headerTitle}></PartHeader>
-            <div id={this.state.chartId} style={{ width: '100%', height: 400 }}></div>
+            <div id={this.state.chartId} style={{ width: '100%', height: this.state.lineChartHeight }}></div>
         </div>
     )
 }
