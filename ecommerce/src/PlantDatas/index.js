@@ -4,13 +4,14 @@ import Nav from '../Component/Nav'
 import Weather from '../Component/Weather'
 import Thermometer from 'react-thermometer-component'
 import MyMenu from '../Component/MyMenu'
-
+import LineChart from '../Component/LineChart'
+ 
 import './index.less'
 class PlantDatas extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            current_position: '环境数据',
+            current_position: '实时数据',
             water_data: '79%',
             sun_data: '24.3klux',
             co2_data: '441ppm',
@@ -28,76 +29,22 @@ class PlantDatas extends Component {
 
     }
 
-    // 获取面板展示数据
-    getShowData(show) {
-        switch (show) {
-            case '1': {
-                return (
-                    <div className="environmental_data" >
-                        <div>
-                            <span className="timeData">实时数据</span>
-                        </div>
-                        <div className="weather_thermometer">
-                            <Weather></Weather>
-                            <div className="myThermometer">
-                                <span>温度</span>
-                                <Thermometer
-                                    theme="light"
-                                    value="90"
-                                    max="100"
-                                    format="°C"
-                                    size="small"
-                                    height="100" >
-                                </Thermometer>
-                            </div>
-                            <div className="myHygrometer">
-                                <span>湿度</span>
-                                <Thermometer
-                                    theme="light"
-                                    value="90"
-                                    max="100"
-                                    format="%"
-                                    size="small"
-                                    height="100" >
-                                </Thermometer>
-                            </div>
-
-                        </div>
-                        <div className="other_data">
-                            <div><span>土壤水分: </span>{this.state.water_data}</div>
-                            <div><span>光照强度: </span>{this.state.sun_data}</div>
-                            <div><span>CO2浓度： </span>{this.state.co2_data}</div>
-                        </div>
-                    </div>
-                )
-            }
-            case '2': {
-                return (
-                    <div className="garden_image">
-
-                    </div>
-                )
-            }
-
-            default: break
-        }
-    }
-
-
-
 
     render() {
 
         const leftMenu = [
             { 'title': '种植数据', 'content': '', 'key': '0', 'Iconfont': 'iconshangdian1' },
-            { 'title': '环境数据', 'content': '', 'key': '1', 'Iconfont': 'iconshangdian' },
-            { 'title': '果园图像', 'content': '', 'key': '2', 'Iconfont': 'iconshangdian' },
-            { 'title': '智慧栽培', 'content': '', 'key': '3', 'Iconfont': 'iconshangdian' },
-            { 'title': '智能识别', 'content': '', 'key': '4', 'Iconfont': 'iconshangdian' },
-            { 'title': '病虫害防治', 'content': '', 'key': '5', 'Iconfont': 'iconshangdian' },
-            { 'title': '更多功能', 'content': '', 'key': '6', 'Iconfont': 'iconshangdian' }
+            { 'title': '实时数据', 'content': '', 'key': '1', 'Iconfont': 'iconshangdian' },
+            { 'title': '历史数据', 'content': '', 'key': '2', 'Iconfont': 'iconshangdian' },
+            { 'title': '果园图像', 'content': '', 'key': '3', 'Iconfont': 'iconshangdian' },
+            { 'title': '智慧栽培', 'content': '', 'key': '4', 'Iconfont': 'iconshangdian' },
+            { 'title': '智能识别', 'content': '', 'key': '5', 'Iconfont': 'iconshangdian' },
+            { 'title': '历史数据', 'content': '', 'key': '6', 'Iconfont': 'iconshangdian' },
+            { 'title': '病虫害防治', 'content': '', 'key': '7', 'Iconfont': 'iconshangdian' },
+            { 'title': '更多功能', 'content': '', 'key': '8', 'Iconfont': 'iconshangdian' }
 
         ]
+
         return (
             <div className="plantDatas">
                 <Nav></Nav>
@@ -110,12 +57,64 @@ class PlantDatas extends Component {
                     </div>
                     <div className="main_content">
                         <div className="nav">
-                            <span className="title">种植数据</span>
+                            <span className="title">{this.state.current_position}</span>
                             <div className="position">
                                 <span>您的位置: 首页>种植数据>{this.state.current_position}</span>
                             </div>
                         </div>
-                        {this.getShowData(this.state.show)}
+
+                        <div className={this.state.show === '1' || this.state.show === '0' ? 'paneShow' : 'paneHide'}>
+                            <div className="environmental_data" >
+                                <div>
+                                    <span className="timeData">实时数据</span>
+                                </div>
+                                <div className="weather_thermometer">
+                                    <Weather></Weather>
+                                    <div className="myThermometer">
+                                        <span>温度</span>
+                                        <Thermometer
+                                            theme="light"
+                                            value="90"
+                                            max="100"
+                                            format="°C"
+                                            size="small"
+                                            height="100" >
+                                        </Thermometer>
+                                    </div>
+                                    <div className="myHygrometer">
+                                        <span>湿度</span>
+                                        <Thermometer
+                                            theme="light"
+                                            value="90"
+                                            max="100"
+                                            format="%"
+                                            size="small"
+                                            height="100" >
+                                        </Thermometer>
+                                    </div>
+
+                                </div>
+                                <div className="other_data">
+                                    <div><span>土壤水分: </span>{this.state.water_data}</div>
+                                    <div><span>光照强度: </span>{this.state.sun_data}</div>
+                                    <div><span>CO2浓度： </span>{this.state.co2_data}</div>
+                                </div>
+                                <div className='three_days_tempAndhumidity'>
+                                    <div className="temp">
+                                        <LineChart></LineChart>
+                                    </div>
+                                    <div className='humidity'>
+                                        <LineChart></LineChart>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ body {
 
         .main_content {
             background-color: white;
-            width           : 840px;
+            width           : 74%;
 
             .nav {
                 display         : flex;
@@ -38,53 +38,65 @@ body {
         }
     }
 
-    .weather_thermometer {
-        display        : flex;
-        align-items    : center;
-        padding        : 0px 23px;
-        justify-content: space-between;
 
-        div {
-            text-align: center;
+    .environmental_data {
+        .weather_thermometer {
+            display        : flex;
+            align-items    : center;
+            padding        : 0px 23px;
+            justify-content: space-between;
+
+            div {
+                text-align: center;
+            }
+        }
+
+        .myHygrometer {
+
+            .thermometer .thermometer__draw-b:after,
+            .thermometer .thermometer__draw-b:before {
+                background-color: #2196F3;
+            }
+
+            .thermometer .thermometer__bg-color {
+                background: linear-gradient(#135a91, #1a78c2, #2196F3);
+            }
+        }
+        .three_days_tempAndhumidity{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 20px;
         }
     }
 }
 
-.myHygrometer {
 
-    .thermometer .thermometer__draw-b:after,
-    .thermometer .thermometer__draw-b:before {
-        background-color: #2196F3;
-    }
-
-    .thermometer .thermometer__bg-color {
-        background: linear-gradient(#135a91,#1a78c2,#2196F3);
-    }
-}
 
 .leftNavPane {
-    width: 250px;
+    width: 25%;
 
     .ant-menu {
         background-color: #dee4dd;
     }
 
     .ant-menu-inline .ant-menu-item {
-        font-size: 18px;
-        height: 57px;
+        font-size  : 18px;
+        height     : 57px;
         line-height: 57px;
     }
 
     .ant-menu-inline li:nth-child(1) {
         background-color: #4c903f;
-        color: white;
+        color           : white;
     }
 
     .ant-menu-item-selected {
         background-color: #b4c5b2 !important;
-        color: black !important;
+        color           : black !important;
     }
-    .ant-menu-inline li:nth-child(1)  {
+
+    .ant-menu-inline li:nth-child(1) {
         color: white;
     }
 
@@ -92,8 +104,8 @@ body {
         border-right: 3px solid #b4c5b2;
     }
 
-    .ant-menu-inline li  {
-        display: flex;
+    .ant-menu-inline li {
+        display    : flex;
         align-items: center;
     }
 
@@ -105,4 +117,12 @@ body {
     .ant-menu-item-active {
         background-color: #b4c5b2;
     }
+}
+
+.paneShow {
+    display: block;
+}
+
+.paneHide {
+    display: none;
 }
