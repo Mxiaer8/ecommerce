@@ -6,6 +6,10 @@ import './index.less';
 class PartHeader extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            headerIconType: this.props.headerIconType,
+            headerTitle: this.props.headerTitle
+        }
     }
 
     componentDidMount() {
@@ -13,12 +17,11 @@ class PartHeader extends Component {
     }
 
     render() {
-        const { headerIconType, headerTitle } = this.props;
         return (
             <div className="PartHeader">
                 <div className="PartHeaderLeft">
-                    <IconFont className="PartHeaderIcon" type={headerIconType}></IconFont>
-                    <p>{headerTitle}</p>
+                    <IconFont className="PartHeaderIcon" type={this.state.headerIconType}></IconFont>
+                    <p>{this.state.headerTitle}</p>
                 </div>
                 <p className="PartHeaderMore">查看更多>></p>
             </div>

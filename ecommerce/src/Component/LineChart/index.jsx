@@ -11,6 +11,12 @@ import PartHeader from '../PartHeader';
 class LineChart extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            chartWidth: this.props.chartWidth,
+            chartHeight: this.props.chartHeight,
+            chartIcon: this.props.iconType,
+            headerTitle: this.props.headerTitle
+        }
     }
 
     componentDidMount() {
@@ -33,10 +39,10 @@ class LineChart extends Component {
                 min: 0,
                 max: 600
             }],
-            title: {
-                text: '环境数据变化情况',
-                x: 'center'
-            },
+            // title: {
+            //     text: '环境数据变化情况',
+            //     x: 'center'
+            // },
             tooltip: {
                 trigger: 'axis',
             },
@@ -93,8 +99,8 @@ class LineChart extends Component {
 
 render() {
     return (
-        <div className="LineChart">
-            <PartHeader headerIconType="iconqushi" headerTitle="环境数据变化情况"></PartHeader>
+        <div className="LineChart" style={{ width: this.state.chartWidth, height: this.state.chartHeight }}>
+            <PartHeader headerIconType={this.state.chartIcon} headerTitle={this.state.headerTitle}></PartHeader>
             <div id="main" style={{ width: '100%', height: 400 }}></div>
         </div>
     )

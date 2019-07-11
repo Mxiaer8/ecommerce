@@ -12,7 +12,7 @@ class About extends Component {
             <div className="About">
                 <Nav></Nav>
                 <Carousel></Carousel>
-                <LineChart></LineChart>
+                <LineChart chartWidth="500px"></LineChart>
                 i am a about;why not?
             </div>
         )
