@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
+import { Select } from 'antd';
 import Nav from '../Component/Nav'
 import Weather from '../Component/Weather'
 import Thermometer from 'react-thermometer-component'
@@ -7,6 +8,8 @@ import MyMenu from '../Component/MyMenu'
 import LineChart from '../Component/LineChart'
 
 import './index.less'
+const { Option } = Select;
+
 class PlantDatas extends Component {
     constructor(props) {
         super(props)
@@ -28,6 +31,11 @@ class PlantDatas extends Component {
             current_position: title
         })
 
+    }
+
+    // 获取历史数据
+    handleChange(value) {
+        console.log(`selected ${value}`);
     }
 
 
@@ -64,7 +72,7 @@ class PlantDatas extends Component {
                             </div>
                         </div>
 
-                        <div className={this.state.show === '1'? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === '1' ? 'paneShow' : 'paneHide'}>
                             <div className="environmental_data" >
                                 <div>
                                     <span className="timeData">实时数据</span>
@@ -102,27 +110,29 @@ class PlantDatas extends Component {
                                 </div>
                                 <div className='three_days_tempAndhumidity'>
                                     <div className='temp'>
-                                        <LineChart></LineChart>
+                                        <LineChart chartId="temp" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                     <div className='humidity'>
-                                        <LineChart></LineChart>
+                                        <LineChart chartId="humidity" chartWidth="350px" chartHeight="" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                 </div>
                                 <div className='three_day_waterAndSun'>
                                     <div className='water'>
-                                        <LineChart></LineChart>
+                                        <LineChart chartId="water" chartWidth="350px" chartHeight="" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                     <div className='sun'>
-                                        <LineChart></LineChart>
+                                        <LineChart chartId="sun" chartWidth="350px" chartHeight="" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
 
-                        <div className={this.state.show === '2'?'paneShow' : 'paneHide'}>
-                            <div className = 'orchard_data'>
-                                 
+                        <div className={this.state.show === '2' ? 'paneShow' : 'paneHide'}>
+                            <div className='history_data'>
+                                <div className='history_attribute'>
+                                    
+                                </div>
                             </div>
                         </div>
 
