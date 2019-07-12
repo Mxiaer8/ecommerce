@@ -1,12 +1,48 @@
 .About {
+    background-color: #f0f2f0;
     .aboutMap {
         width: 80%;
         margin: 0 auto;
-        background-color: #dee5dd;
-        height: 800px;
+        background-color: white;
+        height: 100%;
+        padding-bottom: 30px;
         .aboutMapHeader {
             width: 100%;
             height: 80px;
+            background-color: #dee4dd;
+            border-left: 5px solid #4c903f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            .aboutMapHeaderLeft {
+                display: flex;
+                align-items: center;
+                font-size: 28px;
+                .aboutMapIcon {
+                    font-size: 36px;
+                    margin: 0 20px;
+                }
+            }
+            .aboutMapHeaderRight {
+                margin-right: 20px;
+            }
+            p {
+                margin: 0;
+            }
+        }
+        .aboutMapContent {
+            .aboutMapMessage {
+                p {
+                    margin-bottom: 5px;
+                }
+                margin-left: 20px;
+                margin-top: 20px;
+                font-size: 18px;
+            }
+            .aboutMapMap {
+                margin: 0 20px;
+            }
         }
     }
 }

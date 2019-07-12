@@ -13,7 +13,7 @@ class Footer extends Component {
     render() {
         return (
             <div className="Footer">
-                i am a footer
+                <p>负责单位：华南农业大学虚拟现实研究所  地址：广东省广州市天河区五山路</p>
             </div>
         )
     }

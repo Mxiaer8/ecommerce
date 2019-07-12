@@ -665,8 +665,12 @@ module.exports = function (webpackEnv) {
       tls: 'empty',
       child_process: 'empty'
     },
+    externals:{
+      'BMap':'BMap'
+    },
     // Turn off performance processing because we utilize our own hints via the
     // FileSizeReporter
     performance: false
   };
+
 };
