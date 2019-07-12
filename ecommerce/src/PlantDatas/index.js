@@ -6,8 +6,12 @@ import Weather from '../Component/Weather'
 import Thermometer from 'react-thermometer-component'
 import MyMenu from '../Component/MyMenu'
 import LineChart from '../Component/LineChart'
-
+import { DatePicker, Button } from 'antd';
 import './index.less'
+import moment from 'moment';
+import 
+
+const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const { Option } = Select;
 
 class PlantDatas extends Component {
@@ -130,13 +134,64 @@ class PlantDatas extends Component {
 
                         <div className={this.state.show === '2' ? 'paneShow' : 'paneHide'}>
                             <div className='history_data'>
-                                <div className='history_attribute'>
-                                    
+                                <div className='point'>
+                                    <span>请选择节点： </span>
+                                    <span className='history_point'>
+                                        <Select defaultValue="point1" style={{ width: 120 }} onChange={this.handleChange}>
+                                            <Option value="point1">节点一</Option>
+                                            <Option value="point2">节点二</Option>
+                                            <Option value="point3">节点三</Option>
+                                        </Select>
+                                    </span>
                                 </div>
+                                <div className='attribute'>
+                                    <span>请选择属性： </span>
+                                    <span className='history_attribute'>
+                                        <Select defaultValue="attribute1" style={{ width: 120 }} onChange={this.handleChange}>
+                                            <Option value="attribute1">空气温度</Option>
+                                            <Option value="attribute2">空气湿度</Option>
+                                            <Option value="attribute3">土壤水分</Option>
+                                            <Option value="attribute4">日照时长</Option>
+                                            <Option value="attribute5">光照强度</Option>
+                                            <Option value="attribute6">CO2浓度</Option>
+                                            <Option value="attribute7">全部显示 </Option>
+                                        </Select>
+                                    </span>
+                                </div>
+
+                                <div className='year'>
+                                    <span>请选择时间段：</span>
+                                    <span className='history_year'>
+                                        <Select defaultValue="2017" style={{ width: 120 }} onChange={this.handleChange}>
+                                            <Option value="2017">2017</Option>
+                                            <Option value="2018">2018</Option>
+                                            <Option value="2019">2019</Option>
+                                        </Select>
+                                    </span>
+                                </div>
+
                             </div>
                         </div>
 
 
+                        <div className={this.state.show === '3' ? 'paneShow' : 'paneHide'}>
+                            <div className='garden_data'>
+                                <div className='garden_search'>
+                                    <div className='timer'>
+                                        <span>时间： </span>
+                                        <DatePicker
+                                            format="YYYY-MM-DD HH:mm:ss"
+                                            showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }}
+                                        />
+                                    </div>
+                                    <Button type="primary">查询</Button>
+                                </div>
+                                <div className = 'garden_result'>
+                                     
+                                </div>
+                            </div>
+
+                        </div>
 
 
                     </div>
