@@ -9,7 +9,6 @@ import LineChart from '../Component/LineChart'
 import { DatePicker, Button } from 'antd';
 import './index.less'
 import moment from 'moment';
-import 
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const { Option } = Select;
@@ -134,7 +133,8 @@ class PlantDatas extends Component {
 
                         <div className={this.state.show === '2' ? 'paneShow' : 'paneHide'}>
                             <div className='history_data'>
-                                <div className='point'>
+                                <div className = 'history_choose'>
+                                    <div className='point'>
                                     <span>请选择节点： </span>
                                     <span className='history_point'>
                                         <Select defaultValue="point1" style={{ width: 120 }} onChange={this.handleChange}>
@@ -169,6 +169,11 @@ class PlantDatas extends Component {
                                         </Select>
                                     </span>
                                 </div>
+                                </div>
+                                <div className = 'history_result'>
+                                
+                                </div>
+                                
 
                             </div>
                         </div>
