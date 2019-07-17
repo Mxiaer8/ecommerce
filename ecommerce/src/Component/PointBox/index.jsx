@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class Point extends Component {
+class PointBox extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -19,4 +19,4 @@ class Point extends Component {
     }
 }
 
-export default Point
+export default PointBox
