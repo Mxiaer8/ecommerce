@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Nav from '../Component/Nav'
 import MyMenu from '../Component/MyMenu'
 import ReactDOM from "react-dom";
-
+import SmallNav from '../Component/SmallNav'
+import './index.less'
 
 class LitchiProducts extends Component {
     constructor(props) {
@@ -27,8 +28,9 @@ class LitchiProducts extends Component {
     render() {
         const leftMenu = [
             { 'title': '荔枝产品', 'content': '', 'key': '0', 'Iconfont': 'iconshangdian1' },
-            { 'title': '产品信息', 'content': '', 'key': '1', 'Iconfont': 'iconshangdian' },
-            { 'title': '加工技术', 'content': '', 'key': '2', 'Iconfont': 'iconshangdian' }
+            { 'title': '产品信息', 'content': '', 'key': 'product', 'Iconfont': 'iconshangdian' },
+            { 'title': '加工技术', 'content': '', 'key': 'machining', 'Iconfont': 'iconshangdian' },
+            { 'title': '更多', 'content': '', 'key': 'lichiMore', 'Iconfont': 'iconshangdian' }
         ]
 
 
@@ -40,7 +42,29 @@ class LitchiProducts extends Component {
                         <MyMenu
                             data={leftMenu}
                             getClick={this.getClick.bind(this)}
+                            width={'100%'}
                         ></MyMenu>
+                    </div>
+                    <div className="main_content">
+                        <SmallNav current_position={this.state.current_position}></SmallNav>
+
+                        <div className={this.state.show === '2' ? 'paneShow' : 'paneHide'}>
+                            <div className='processTechnology_data'>
+                                <div className='standard'>
+                                    <img src=''></img>
+                                    <div className='method'>
+                                        <span className='title'>荔枝酒的标准制作方法</span>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div className='non_standard'>
+                                    <div className='method'>
+                                        <span className='title'>荔枝酒的南方制作方法</span>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

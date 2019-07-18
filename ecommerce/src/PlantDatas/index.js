@@ -9,7 +9,9 @@ import LineChart from '../Component/LineChart'
 import { DatePicker, Button } from 'antd'
 import PointBox from '../Component/PointBox'
 import IconFont from '../Config/IconFont'
+import SmallNav from '../Component/SmallNav'
 import './index.less'
+import Util from '../Util/util'
 import moment from 'moment';
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
@@ -25,6 +27,13 @@ class PlantDatas extends Component {
             co2_data: '441ppm',
             show: '1'
         }
+    }
+
+    componentDidMount() {
+        let [menu, menuItem] = Util.getQueryString()
+        this.setState({
+            current_position: menuItem
+        })
     }
 
     // 获取用户点击左部导航栏的结果
@@ -48,13 +57,13 @@ class PlantDatas extends Component {
 
         const leftMenu = [
             { 'title': '种植数据', 'content': '', 'key': '0', 'Iconfont': 'iconshangdian1' },
-            { 'title': '实时数据', 'content': '', 'key': '1', 'Iconfont': 'iconshangdian' },
-            { 'title': '历史数据', 'content': '', 'key': '2', 'Iconfont': 'iconshangdian' },
-            { 'title': '果园图像', 'content': '', 'key': '3', 'Iconfont': 'iconshangdian' },
-            { 'title': '智慧栽培', 'content': '', 'key': '4', 'Iconfont': 'iconshangdian' },
-            { 'title': '智能识别', 'content': '', 'key': '5', 'Iconfont': 'iconshangdian' },
-            { 'title': '病虫害防治', 'content': '', 'key': '7', 'Iconfont': 'iconshangdian' },
-            { 'title': '更多功能', 'content': '', 'key': '8', 'Iconfont': 'iconshangdian' }
+            { 'title': '实时数据', 'content': '', 'key': 'realTime', 'Iconfont': 'iconshangdian' },
+            { 'title': '历史数据', 'content': '', 'key': 'history', 'Iconfont': 'iconshangdian' },
+            { 'title': '果园图像', 'content': '', 'key': 'garden', 'Iconfont': 'iconshangdian' },
+            { 'title': '智慧栽培', 'content': '', 'key': 'wisdom', 'Iconfont': 'iconshangdian' },
+            { 'title': '智能识别', 'content': '', 'key': 'intelligence', 'Iconfont': 'iconshangdian' },
+            { 'title': '病虫害防治', 'content': '', 'key': 'pestsAndDiseases', 'Iconfont': 'iconshangdian' },
+            { 'title': '更多功能', 'content': '', 'key': 'plantMore', 'Iconfont': 'iconshangdian' }
 
         ]
 
@@ -66,16 +75,11 @@ class PlantDatas extends Component {
                         <MyMenu
                             data={leftMenu}
                             getClick={this.getClick.bind(this)}
+                            width= {'100%'}
                         ></MyMenu>
                     </div>
                     <div className="main_content">
-                        <div className="nav">
-                            <span className="title">{this.state.current_position}</span>
-                            <div className="position">
-                                <span>您的位置: 首页>种植数据>{this.state.current_position}</span>
-                            </div>
-                        </div>
-
+                        <SmallNav current_position = {this.state.current_position}></SmallNav>
                         <div className={this.state.show === '1' ? 'paneShow' : 'paneHide'}>
                             <div className="environmental_data" >
                                 <div>

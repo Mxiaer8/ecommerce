@@ -36,13 +36,6 @@ body {
     }
 }
 
-.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-    background-color: #1f7d0d !important;
-}
-
-// .ant-menu-item .item .ant-menu-item-active{
-//     background-color: #1f7d0d;
-// }
 
 
 .menu {
@@ -61,17 +54,10 @@ body {
             max-width: 300px;
         }
     }
-
-    .menu_item {
-        margin-bottom: 3px;
-    }
-
 }
 
-.ant-menu-item:hover,
-.ant-menu-item-active {
-    color        : black;
-    border-bottom: 2px solid #4c903f;
+.menu_item {
+    margin-bottom: 3px;
 }
 
 .ant-menu {
@@ -86,33 +72,40 @@ body {
     .ant-menu-item:not(:first-child) {
         margin-top   : 0px !important;
         margin-bottom: 0px !important;
+        border       : none;
     }
-}
-
-.ant-menu-item,
-.ant-menu-submenu-title {
-    padding: 0 30px;
-}
-
-.ant-menu-submenu>.ant-menu {
-    background-color: #4c903f;
-}
-
-.ant-menu-submenu-title:hover {
-    color: black;
-}
-
-
-.ant-menu-horizontal {
-    border-bottom: none;
 
     .ant-menu-item:hover {
+        color: black;
+    }
+
+    .ant-menu-item-selected {
+        border-bottom: 2px solid #4c903f;
+        color: black;
+
+        .ant-menu-item,
+        .ant-menu-submenu-title {
+            padding: 0 40px;
+        }
+    }
+
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+        padding: 0 30px;
+    }
+
+    .ant-menu-submenu .ant-menu {
+        background-color: #4c903f;
+    }
+
+    .ant-menu-submenu-title:hover {
         color: black;
     }
 
     .ant-menu-submenu-active,
     .ant-menu-submenu:hover {
         border-bottom: 2px solid #4c903f;
+        color        : black !important;
     }
 
     .ant-menu-submenu-selected {
@@ -120,19 +113,36 @@ body {
         border-bottom: 2px solid #4c903f;
     }
 
-    .ant-menu-item-selected {
-        border-bottom: 2px solid #4c903f;
-        a {
+    .ant-menu-horizontal {
+        border-bottom: none;
+
+        .ant-menu-item:hover {
             color: black;
         }
 
-        .ant-menu-item,
-        .ant-menu-submenu-title {
-            padding: 0 40px;
-        }
+
+
+
     }
+
+    .ant-menu-submenu-popup {
+        background-color: #4c903f;
+    }
+
 }
 
-.ant-menu-submenu-popup {
-    background-color: #4c903f;
+
+
+.ant-menu-sub {
+
+    .ant-menu-item:hover,
+    .ant-menu-item-active,
+    .ant-menu-item-selected {
+        color           : black;
+        border-bottom   : 2px solid #4c903f;
+        background-color: #1f7d0d !important;
+        border          : none;
+    }
+
+
 }

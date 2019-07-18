@@ -14,221 +14,164 @@ body {
             background-color: white;
             width           : 74%;
 
-            .nav {
-                display         : flex;
-                justify-content : space-between;
-                padding         : 0 13px;
-                background-color: #dee4dd;
-                align-items     : center;
-                height          : 57px;
-                border-left     : 5px solid #4c903f;
-
-                .title {
-                    font-size  : 20px;
-                    font-weight: 400;
-                    color      : #3a3a3a;
-                }
-            }
-
             .timeData {
                 display  : block;
                 font-size: 20px;
                 margin   : 20px 20px;
             }
         }
-    }
 
-
-    .environmental_data {
-        .weather_thermometer {
-            display        : flex;
-            align-items    : center;
-            padding        : 0px 23px;
-            justify-content: space-between;
-
-            div {
-                text-align: center;
-            }
+        .leftNavPane {
+            width: 25%;
         }
 
-        .myHygrometer {
 
-            .thermometer .thermometer__draw-b:after,
-            .thermometer .thermometer__draw-b:before {
-                background-color: #2196F3;
-            }
 
-            .thermometer .thermometer__bg-color {
-                background: linear-gradient(#135a91, #1a78c2, #2196F3);
-            }
-        }
-
-        .three_days_tempAndhumidity,
-        .three_day_waterAndSun {
-            display        : flex;
-            align-items    : center;
-            justify-content: space-between;
-            padding        : 0px 20px;
-        }
-    }
-
-    .garden_data {
-        font-size: 15px;
-
-        .garden_search {
-            display        : flex;
-            align-items    : center;
-            justify-content: space-between;
-            width          : 311px;
-            margin         : 20px 30px;
-        }
-
-        .ant-btn-primary {
-            background-color: #4c903f;
-            border-color    : #4c903f;
-        }
-
-        .ant-btn-primary:hover,
-        .ant-btn-primary:focus {
-            background-color: #52a941;
-            border-color    : #52a941;
-        }
-
-        .garden_result {
-            margin : 20px 30px;
-            display: flex;
-        }
-
-    }
-
-    .history_data {
-        .history_choose {
-            .point_attribute {
-                display    : flex;
-                align-items: center;
-                margin     : 20px 30px;
-                width      : 500px;
-
+        .environmental_data {
+            .weather_thermometer {
+                display        : flex;
+                align-items    : center;
+                padding        : 0px 23px;
                 justify-content: space-between;
+
+                div {
+                    text-align: center;
+                }
             }
 
-            .year {
-                width          : 500px;
+            .myHygrometer {
+
+                .thermometer .thermometer__draw-b:after,
+                .thermometer .thermometer__draw-b:before {
+                    background-color: #2196F3;
+                }
+
+                .thermometer .thermometer__bg-color {
+                    background: linear-gradient(#135a91, #1a78c2, #2196F3);
+                }
+            }
+
+            .three_days_tempAndhumidity,
+            .three_day_waterAndSun {
                 display        : flex;
                 align-items    : center;
                 justify-content: space-between;
+                padding        : 0px 20px;
+            }
+        }
+
+        .garden_data {
+            font-size: 15px;
+
+            .garden_search {
+                display        : flex;
+                align-items    : center;
+                justify-content: space-between;
+                width          : 311px;
                 margin         : 20px 30px;
             }
+
+            .ant-btn-primary {
+                background-color: #4c903f;
+                border-color    : #4c903f;
+            }
+
+            .ant-btn-primary:hover,
+            .ant-btn-primary:focus {
+                background-color: #52a941;
+                border-color    : #52a941;
+            }
+
+            .garden_result {
+                margin : 20px 30px;
+                display: flex;
+            }
+
         }
 
-        .history_result {
-            display    : flex;
-            align-items: center;
-        }
-    }
-
-    .pestsAndDiseases_data {
-        margin   : 20px 30px;
-        font-size: 15px;
-
-        .pests_data {
-            .pests_titie {
-                span {
+        .history_data {
+            .history_choose {
+                .point_attribute {
                     display    : flex;
                     align-items: center;
+                    margin     : 20px 30px;
+                    width      : 500px;
 
-                    .anticon {
-                        font-size   : 18px;
-                        margin-right: 5px;
-                    }
+                    justify-content: space-between;
                 }
 
-                .diving_line {
-                    margin          : 5px 0px;
-                    height          : 1px;
-                    background-color: #dee4dd;
+                .year {
+                    width          : 500px;
+                    display        : flex;
+                    align-items    : center;
+                    justify-content: space-between;
+                    margin         : 20px 30px;
                 }
+            }
 
+            .history_result {
+                display    : flex;
+                align-items: center;
             }
         }
 
-        .diseases_data {
-            .diseases_titie {
-                span {
-                    display    : flex;
-                    align-items: center;
+        .pestsAndDiseases_data {
+            margin   : 20px 30px;
+            font-size: 15px;
 
-                    .anticon {
-                        font-size   : 18px;
-                        margin-right: 5px;
+            .pests_data {
+                .pests_titie {
+                    span {
+                        display    : flex;
+                        align-items: center;
+
+                        .anticon {
+                            font-size   : 18px;
+                            margin-right: 5px;
+                        }
                     }
-                }
 
-                .diving_line {
-                    margin          : 5px 0px;
-                    height          : 1px;
-                    background-color: #dee4dd;
-                }
+                    .diving_line {
+                        margin          : 5px 0px;
+                        height          : 1px;
+                        background-color: #dee4dd;
+                    }
 
+                }
             }
+
+            .diseases_data {
+                .diseases_titie {
+                    span {
+                        display    : flex;
+                        align-items: center;
+
+                        .anticon {
+                            font-size   : 18px;
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .diving_line {
+                        margin          : 5px 0px;
+                        height          : 1px;
+                        background-color: #dee4dd;
+                    }
+
+                }
+            }
+
         }
 
+        .paneShow {
+            display       : block;
+            padding-bottom: 20px;
+        }
+
+        .paneHide {
+            display: none;
+        }
     }
-}
 
 
-
-.leftNavPane {
-    width: 25%;
-
-    // .ant-menu {
-    //     background-color: #dee4dd;
-    // }
-
-    // .ant-menu-inline .ant-menu-item {
-    //     font-size  : 18px;
-    //     height     : 57px;
-    //     line-height: 57px;
-    // }
-
-    // .ant-menu-inline li:nth-child(1) {
-    //     background-color: #4c903f;
-    //     color           : white;
-    // }
-
-    // .ant-menu-item-selected {
-    //     background-color: #b4c5b2 !important;
-    //     color           : black !important;
-    // }
-
-    // .ant-menu-inline li:nth-child(1) {
-    //     color: white;
-    // }
-
-    // .ant-menu-item::after {
-    //     border-right: 3px solid #b4c5b2;
-    // }
-
-    // .ant-menu-inline li {
-    //     display    : flex;
-    //     align-items: center;
-    // }
-
-    // .ant-menu-item:hover {
-    //     color: black;
-    // }
-
-    // .ant-menu-item:hover,
-    // .ant-menu-item-active {
-    //     background-color: #b4c5b2;
-    // }
-}
-
-.paneShow {
-    display       : block;
-    padding-bottom: 20px;
-}
-
-.paneHide {
-    display: none;
 }
