@@ -1,29 +1,50 @@
 import React, { Component } from 'react'
 import IconFont from '../../Config/IconFont'
 import './index.less'
+import Util from '../../Util/util'
 import { Menu, Icon } from 'antd';
 
 const { SubMenu } = Menu;
 
 class Nav extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            current: 'home',
+            current: 'product',
         };
 
     }
 
-    handleClick = e => {
-        console.log('click ', e);
-        this.setState({
-            current: e.key,
-        });
-    };
-
     componentDidMount() {
-
+        let [menu, menuItem] = Util.getQueryString()
+        this.setState({
+            current: menuItem || menu
+        })
     }
+
+    handleClick = e => {
+        const plantUrl = '/PlantDatas?' + e.keyPath[0]
+        const litchiProductsUrl = '/LitchiProducts?' + e.keyPath[0]
+        const litchipCultureUrl = '/LitchiCulture?' + e.keyPath[0]
+        if (e.keyPath[1]) {
+            switch (e.keyPath[1]) {
+                case 'item_1': {
+                    window.location.href = plantUrl
+                    break
+                }
+                case 'item_3': {
+                    window.location.href = litchiProductsUrl
+                    break
+                }
+                case 'item_4': {
+                    window.location.href = litchipCultureUrl
+                    break
+                }
+            }
+        } else {
+            window.location.href = '/' + e.keyPath[0]
+        }
+    };
 
 
     render() {
@@ -42,43 +63,40 @@ class Nav extends Component {
                     </div>
                     <div className="menu_item">
                         <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
-                            <Menu.Item key="home">
-                                <a href='/Home'>首页</a>
-                            </Menu.Item>
+                            <Menu.Item key="Home"> 首页 </Menu.Item>
                             <SubMenu
                                 title={
-                                    <span className="submenu-title-wrapper plantDatas">种植数据</span>
+                                    <span className="submenu-title-wrapper">种植数据</span>
                                 }
                             >
-                                <Menu.Item key="setting:1" className="item">环境数据</Menu.Item>
-                                <Menu.Item key="setting:2" className="item">果园图像</Menu.Item>
-                                <Menu.Item key="setting:3" className="item">智慧栽培</Menu.Item>
-                                <Menu.Item key="setting:5" className="item">智能识别</Menu.Item>
-                                <Menu.Item key="setting:6" className="item">病虫害防治</Menu.Item>
-                                <Menu.Item key="setting:7" className="item">更多功能</Menu.Item>
+                                <Menu.Item key="realTime" className="item">实时数据</Menu.Item>
+                                <Menu.Item key="history" className="item">历史数据</Menu.Item>
+                                <Menu.Item key="garden" className="item">果园图像</Menu.Item>
+                                <Menu.Item key="wisdom" className="item">智慧栽培</Menu.Item>
+                                <Menu.Item key="intelligence" className="item">智能识别</Menu.Item>
+                                <Menu.Item key="pestsAndDiseases" className="item">病虫害防治</Menu.Item>
+                                <Menu.Item key="plantMore" className="item">更多功能</Menu.Item>
                             </SubMenu>
-                            <Menu.Item key="garden">
-                                <a href=''>虚拟果园</a>
-                            </Menu.Item>
+                            <Menu.Item key="Fictitious">虚拟果园</Menu.Item>
                             <SubMenu
                                 title={
-                                    <span className="submenu-title-wrapper plantDatas">荔枝产品</span>
+                                    <span className="submenu-title-wrapper">荔枝产品</span>
                                 }
                             >
-                                <Menu.Item key="setting:8" className="item">产品信息</Menu.Item>
-                                <Menu.Item key="setting:9" className="item">加工技术</Menu.Item>
-                                <Menu.Item key="setting:10" className="item">更多</Menu.Item>
+                                <Menu.Item key="product" className="item">产品信息</Menu.Item>
+                                <Menu.Item key="machining" className="item">加工技术</Menu.Item>
+                                <Menu.Item key="lichiMore" className="item">更多</Menu.Item>
                             </SubMenu>
                             <SubMenu
                                 title={
-                                    <span className="submenu-title-wrapper plantDatas">荔枝文化</span>
+                                    <span className="submenu-title-wrapper">荔枝文化</span>
                                 }
                             >
-                                <Menu.Item key="setting:11" className="item">荔枝简介</Menu.Item>
-                                <Menu.Item key="setting:12" className="item">价值分析</Menu.Item>
-                                <Menu.Item key="setting:13" className="item">更多</Menu.Item>
+                                <Menu.Item key="introduction" className="item">荔枝简介</Menu.Item>
+                                <Menu.Item key="valueAnalyse" className="item">价值分析</Menu.Item>
+                                <Menu.Item key="cultureMore" className="item">更多</Menu.Item>
                             </SubMenu>
-                            <Menu.Item key="contract">联系我们</Menu.Item>
+                            <Menu.Item key="Contract">联系我们</Menu.Item>
                         </Menu>
                     </div>
                 </div>

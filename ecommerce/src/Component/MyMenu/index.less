@@ -22,6 +22,7 @@
         align-items: center;
     }
 
+
     .ant-menu-horizontal>.ant-menu-submenu-active,
     .ant-menu-horizontal>.ant-menu-submenu:hover {
         border-bottom: 2px solid #4c903f;
@@ -49,7 +50,8 @@
     }
 
     .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-        background-color: #b4c5b2 ;
+        background-color: #b4c5b2;
+        color           : black;
     }
 
     .ant-menu-horizontal>.ant-menu-submenu-selected {
@@ -57,8 +59,8 @@
         border-bottom: 2px solid #4c903f;
     }
 
-    .ant-menu-horizontal>.ant-menu-item:hover,
-    .ant-menu-horizontal>.ant-menu-item-active {
+    .ant-menu-item:hover,
+    .ant-menu-item-active {
         color        : black;
         border-bottom: 2px solid #4c903f;
     }
@@ -104,5 +106,10 @@
     .ant-menu-inline li {
         display    : flex;
         align-items: center;
+    }
+
+    .ant-menu-item:hover,
+    .ant-menu-item-active {
+        border-bottom: none;
     }
 }
