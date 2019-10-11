@@ -53,7 +53,7 @@ window.getWeather = function (response) {
 
 //根据获取到的数据更改页面中相应的图片
 function changeImg(data) {
-    if (data) {
+    if (data && data.result) {
         var aImg = document.getElementById('future_container').getElementsByClassName('weather_img');
         for (var j = 0; j < aImg.length; j++) {
             var weatherId = data.result[j].weatid;

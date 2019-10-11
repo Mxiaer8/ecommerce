@@ -14,7 +14,8 @@ export default class Util {
 
     //根据菜单的key值获取菜单名
     static getMenuName(key) {
-        const [name1, name2] = ['', '']
+        console.log(key)
+        let [name1, name2] = ['', '']
         switch(key) {
             case 'realTime': {
                 [name1, name2] = ['种植数据', '实时数据']
@@ -66,6 +67,9 @@ export default class Util {
             }
             case 'cultureMore': {
                 [name1, name2] = ['荔枝文化', '更多']
+                break
+            }
+            default: {
                 break
             }
         }

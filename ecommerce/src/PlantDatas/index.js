@@ -12,7 +12,11 @@ import IconFont from '../Config/IconFont'
 import SmallNav from '../Component/SmallNav'
 import './index.less'
 import Util from '../Util/util'
+import EcommerceUrl from '../Config/config'
 import moment from 'moment';
+import ecoAxios from '../Config/ecoAxios';
+import { func } from 'prop-types';
+import axios from '../Config/ecoAxios';
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const { Option } = Select;
@@ -25,15 +29,22 @@ class PlantDatas extends Component {
             water_data: '79%',
             sun_data: '24.3klux',
             co2_data: '441ppm',
-            show: '1'
+            show: 'realTime',
+            pestsArray: [],
+            diseasesArray: []
         }
     }
 
     componentDidMount() {
         let [menu, menuItem] = Util.getQueryString()
+        let [title1, title2] = Util.getMenuName(menuItem)
         this.setState({
-            current_position: menuItem
+            show: menuItem,
+            current_position: title2
         })
+        if (menuItem == 'pestsAndDiseases') {
+            this.getPestsAndDiseases()
+        }
     }
 
     // 获取用户点击左部导航栏的结果
@@ -44,7 +55,46 @@ class PlantDatas extends Component {
             show: e.key,
             current_position: title
         })
+        if (e.key == 'pestsAndDiseases') {
+            this.getPestsAndDiseases()
+        }
 
+    }
+
+    // 获取病虫害防治数据
+    getPestsAndDiseases() {
+        //虫害
+        ecoAxios.get(EcommerceUrl.pestsUrl).then((res, err) => {
+            if (res.status == 200) {
+                this.setState({
+                    pestsArray: res.data.data
+                })
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
+        //病害
+        ecoAxios.get(EcommerceUrl.diseasesUrl).then((res, err) => {
+            if (res.status == 200) {
+                this.setState({
+                    diseasesArray: res.data.data
+                })
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    // 获取病虫害的详情
+    getPestsAndDiseasesDetail = (e) => {
+        console.log(e)
+        ecoAxios.get(EcommerceUrl.pestsAndDiseaseDetailUrl + 'id=' + e).then((res,err) => {
+            if(res.data.status == 200) {
+                console.log(res.data)
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     // 获取历史数据
@@ -75,12 +125,12 @@ class PlantDatas extends Component {
                         <MyMenu
                             data={leftMenu}
                             getClick={this.getClick.bind(this)}
-                            width= {'100%'}
+                            width={'100%'}
                         ></MyMenu>
                     </div>
                     <div className="main_content">
-                        <SmallNav current_position = {this.state.current_position}></SmallNav>
-                        <div className={this.state.show === '1' ? 'paneShow' : 'paneHide'}>
+                        <SmallNav current_position={this.state.current_position}></SmallNav>
+                        <div className={this.state.show === 'realTime' ? 'paneShow' : 'paneHide'}>
                             <div className="environmental_data" >
                                 <div>
                                     <span className="timeData">实时数据</span>
@@ -136,7 +186,7 @@ class PlantDatas extends Component {
 
                         </div>
 
-                        <div className={this.state.show === '2' ? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === 'history' ? 'paneShow' : 'paneHide'}>
                             <div className='history_data'>
                                 <div className='history_choose'>
                                     <div className='point_attribute'>
@@ -184,7 +234,7 @@ class PlantDatas extends Component {
                             </div>
                         </div>
 
-                        <div className={this.state.show === '3' ? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === 'garden' ? 'paneShow' : 'paneHide'}>
                             <div className='garden_data'>
                                 <div className='garden_search'>
                                     <div className='timer'>
@@ -203,7 +253,7 @@ class PlantDatas extends Component {
 
                         </div>
 
-                        <div className={this.state.show === '5' ? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === 'intelligence' ? 'paneShow' : 'paneHide'}>
                             <div className='intelligence_data'>
                                 <div className='intelligence_choose'>
                                     <Select defaultValue="point1" style={{ width: 120 }} onChange={this.handleChange}>
@@ -231,7 +281,7 @@ class PlantDatas extends Component {
 
 
 
-                        <div className={this.state.show === '7' ? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === 'pestsAndDiseases' ? 'paneShow' : 'paneHide'}>
                             <div className='pestsAndDiseases_data'>
                                 <div className='pests_data'>
                                     <div className='pests_titie'>
@@ -239,24 +289,46 @@ class PlantDatas extends Component {
                                         <div className='diving_line'></div>
                                     </div>
                                     <div className='pests_content'>
-
+                                        {
+                                            this.state.pestsArray.map((pest, index) => {
+                                                return (
+                                                    <div key={pest.id} className='pestBox' onClick = {this.getPestsAndDiseasesDetail.bind(this, pest.id)}>
+                                                        <div className='pestImg'>
+                                                            <img src={pest.pic}></img>
+                                                        </div>
+                                                        <span>{pest.name}</span>
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
                                 <div className='diseases_data'>
                                     <div className='diseases_titie'>
-                                        <span><IconFont type='iconbinghai'></IconFont>常见虫害</span>
+                                        <span><IconFont type='iconbinghai'></IconFont>常见病害</span>
                                         <div className='diving_line'></div>
                                     </div>
                                     <div className='diseases_content'>
-
+                                    {
+                                            this.state.diseasesArray.map((pest, index) => {
+                                                return (
+                                                    <div key={pest.id} className='diseaseBox' onClick = {this.getPestsAndDiseasesDetail.bind(this,pest.id)}>
+                                                        <div className='diseaseImg'>
+                                                            <img src={pest.pic}></img>
+                                                        </div>
+                                                        <span>{pest.name}</span>
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className={this.state.show === '9' ? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === 'pestsAndDiseases_detail_data' ? 'paneShow' : 'paneHide'}>
                             <div className='pestsAndDiseases_detail'>
-                                <div className='titie'>
+                                <div className='title'>
                                     <span><IconFont type='iconbinghai'></IconFont>{}</span>
                                     <div className='diving_line'></div>
                                 </div>
