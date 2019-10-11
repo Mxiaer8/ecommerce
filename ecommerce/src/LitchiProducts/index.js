@@ -3,6 +3,7 @@ import Nav from '../Component/Nav'
 import MyMenu from '../Component/MyMenu'
 import ReactDOM from "react-dom";
 import SmallNav from '../Component/SmallNav'
+import Util from '../Util/util'
 import './index.less'
 
 class LitchiProducts extends Component {
@@ -12,6 +13,15 @@ class LitchiProducts extends Component {
             current_position: '产品信息',
             show: '1'
         }
+    }
+    
+    componentDidMount() {
+        let [menu, menuItem] = Util.getQueryString()
+        let [title1, title2] = Util.getMenuName(menuItem)
+        this.setState({
+            show: menuItem,
+            current_position: title2
+        })
     }
 
     // 获取用户点击左部导航栏的结果

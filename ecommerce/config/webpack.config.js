@@ -135,7 +135,6 @@ module.exports = function (webpackEnv) {
   function getEntries(){
     const entries = {};
     const files = paths.entriesPath;
-    // console.log(117, files)
     files.forEach(({name, path}) => {
       entries[name] = [
         isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),
@@ -146,6 +145,7 @@ module.exports = function (webpackEnv) {
   }
 
   const entries = getEntries()
+
 
   const htmlPlugin = Object.keys(entries).map(name => {
     return new HtmlWebpackPlugin(Object.assign({}, {
