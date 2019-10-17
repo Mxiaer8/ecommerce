@@ -96,7 +96,7 @@ class Nav extends Component {
                                 <Menu.Item key="valueAnalyse" className="item">价值分析</Menu.Item>
                                 <Menu.Item key="cultureMore" className="item">更多</Menu.Item>
                             </SubMenu>
-                            <Menu.Item key="Contract">联系我们</Menu.Item>
+                            <Menu.Item key="About">联系我们</Menu.Item>
                         </Menu>
                     </div>
                 </div>

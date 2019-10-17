@@ -14,10 +14,10 @@ class TipPart extends Component {
     }
 
     render() {
-        const { tipIcon, tipTitle, tipImg, tipMsg } = this.props;
+        const { tipIcon, tipTitle, tipImg, tipMsg, params } = this.props;
         return (
             <div className="TipPart">
-                <PartHeader headerIconType={tipIcon} headerTitle={tipTitle}></PartHeader>
+                <PartHeader headerIconType={tipIcon} headerTitle={tipTitle} params={params}></PartHeader>
                 <div className="tipContent">
                     <img className="tipImg" src={tipImg}></img>
                     <p className="tipMsg">{tipMsg}</p>

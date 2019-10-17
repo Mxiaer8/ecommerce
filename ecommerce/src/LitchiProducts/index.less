@@ -27,28 +27,20 @@
         }
 
         .processTechnology_data {
-            .standard {
-                display        : flex;
-                padding        : 0px 23px;
-                align-items    : center;
-                justify-content: space-between;
-
-                .method {
-                    .title {
-                        font-size: 17px;
-                        color    : #4c903f;
-                    }
-                }
-            }
-
+            .standard,
             .non_standard {
                 .method {
+                    margin: 20px;
                     .title {
-                        font-size: 17px;
-                        color    : #4c903f;
+                        display    : block;
+                        text-align : center;
+                        font-size  : 16px;
+                        font-weight: 600;
+                        color      : #4c903f;
                     }
                 }
             }
+
         }
 
         .leftNavPane {
@@ -61,6 +53,12 @@
     
         .paneHide {
             display: none;
+        }
+
+        .diving_line {
+            margin          : 5px 0px;
+            height          : 1px;
+            background-color: #dee4dd;
         }
     }
 }

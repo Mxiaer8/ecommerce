@@ -15,8 +15,14 @@
             max-height: 180px;
         }
         .tipMsg {
-            text-overflow: ellipsis;
-            max-height: 130px;
+            max-height: 135px;
+            overflow: hidden;
+            margin-bottom: 0px;
+            margin-top: 10px;
+            text-overflow: ellipsis;  
+            display: -webkit-box;  
+            -webkit-line-clamp: 6;  
+            -webkit-box-orient: vertical;
         }
     }
 }

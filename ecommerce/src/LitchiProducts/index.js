@@ -5,13 +5,17 @@ import ReactDOM from "react-dom";
 import SmallNav from '../Component/SmallNav'
 import Util from '../Util/util'
 import './index.less'
+import EcommerceUrl from '../Config/config'
+import ecoAxios from '../Config/ecoAxios';
 
 class LitchiProducts extends Component {
     constructor(props) {
         super(props)
         this.state = {
             current_position: '产品信息',
-            show: '1'
+            show: 'product',
+            standard: '',
+            non_standard: ''
         }
     }
     
@@ -21,6 +25,22 @@ class LitchiProducts extends Component {
         this.setState({
             show: menuItem,
             current_position: title2
+        })
+        this.getLitchiProMsg();
+    }
+
+    getLitchiProMsg() {
+        //荔枝产品板块接口
+        ecoAxios.get(EcommerceUrl.litchiUrl + '5').then((res, err) => {
+            if (res.status == 200) {
+                this.setState({
+                    standard: res.data.data[0].message,
+                    non_standard: res.data.data[1].message
+                })
+                console.log(res.data.data)
+            }
+        }).catch((err) => {
+            console.log(err)
         })
     }
 
@@ -58,19 +78,24 @@ class LitchiProducts extends Component {
                     <div className="main_content">
                         <SmallNav current_position={this.state.current_position}></SmallNav>
 
-                        <div className={this.state.show === '2' ? 'paneShow' : 'paneHide'}>
+                        <div className={this.state.show === 'product' ? 'paneShow' : 'paneHide'}>
+                        </div>
+
+                        <div className={this.state.show === 'machining' ? 'paneShow' : 'paneHide'}>
                             <div className='processTechnology_data'>
                                 <div className='standard'>
                                     <img src=''></img>
                                     <div className='method'>
                                         <span className='title'>荔枝酒的标准制作方法</span>
-                                        <p></p>
+                                        <div className='diving_line'></div>
+                                        <p>{this.state.standard}</p>
                                     </div>
                                 </div>
                                 <div className='non_standard'>
                                     <div className='method'>
                                         <span className='title'>荔枝酒的南方制作方法</span>
-                                        <p></p>
+                                        <div className='diving_line'></div>
+                                        <p>{this.state.non_standard}</p>
                                     </div>
                                 </div>
                             </div>

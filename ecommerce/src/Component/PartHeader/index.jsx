@@ -8,12 +8,17 @@ class PartHeader extends Component {
         super(props);
         this.state = {
             headerIconType: this.props.headerIconType,
-            headerTitle: this.props.headerTitle
+            headerTitle: this.props.headerTitle,
+            params: this.props.params
         }
     }
 
     componentDidMount() {
 
+    }
+
+    handleClick(params, e){
+        window.location.href = '/' + params;
     }
 
     render() {
@@ -23,7 +28,7 @@ class PartHeader extends Component {
                     <IconFont className="PartHeaderIcon" type={this.state.headerIconType}></IconFont>
                     <p>{this.state.headerTitle}</p>
                 </div>
-                <p className="PartHeaderMore">查看更多>></p>
+                <p className="PartHeaderMore" onClick={this.handleClick.bind(this,this.state.params)}>查看更多>></p>
             </div>
         )
     }

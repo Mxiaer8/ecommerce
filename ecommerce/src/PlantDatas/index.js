@@ -168,18 +168,18 @@ class PlantDatas extends Component {
                                 </div>
                                 <div className='three_days_tempAndhumidity'>
                                     <div className='temp'>
-                                        <LineChart chartId="temp" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
+                                        <LineChart chartId="temp" lineChartHeight="400px" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                     <div className='humidity'>
-                                        <LineChart chartId="humidity" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
+                                        <LineChart chartId="_humidity" lineChartHeight="400px" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                 </div>
                                 <div className='three_day_waterAndSun'>
                                     <div className='water'>
-                                        <LineChart chartId="water" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
+                                        <LineChart chartId="water" lineChartHeight="400px" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                     <div className='sun'>
-                                        <LineChart chartId="sun" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
+                                        <LineChart chartId="sun" lineChartHeight="400px" chartWidth="350px" chartHeight="400px" iconType="iconqushi" headerTitle="环境数据变化情况"></LineChart>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +229,8 @@ class PlantDatas extends Component {
                                     </div>
                                 </div>
                                 <div className='history_result'>
-                                    <LineChart chartId="history" lineChartHeight="100%" chartWidth="600px" chartHeight="400px" iconType="iconqushi" headerTitle="数据变化趋势图"></LineChart>
+                                    <LineChart chartId="history" lineChartHeight="400px" chartWidth="60%" chartHeight="400px" iconType="iconqushi" headerTitle="数据变化趋势图"></LineChart>
+                                    
                                 </div>
                             </div>
                         </div>
