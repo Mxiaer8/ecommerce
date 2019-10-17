@@ -136,7 +136,10 @@ class PlantDatas extends Component {
                                     <span className="timeData">实时数据</span>
                                 </div>
                                 <div className="weather_thermometer">
-                                    <Weather></Weather>
+                                    <div className = 'myWeather'>
+                                        <Weather></Weather>
+                                    </div>
+                                    
                                     <div className="myThermometer">
                                         <span>温度</span>
                                         <Thermometer
