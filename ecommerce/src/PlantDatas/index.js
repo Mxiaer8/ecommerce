@@ -58,7 +58,18 @@ class PlantDatas extends Component {
         if (e.key == 'pestsAndDiseases') {
             this.getPestsAndDiseases()
         }
+    }
 
+    // 获取病虫害的详情
+    getPestsAndDiseasesDetail = (e) => {
+        console.log(e)
+        ecoAxios.get(EcommerceUrl.pestsAndDiseaseDetailUrl + 'id=' + e).then((res, err) => {
+            if (res.data.status == 200) {
+                console.log(res.data)
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     // 获取病虫害防治数据
@@ -88,8 +99,8 @@ class PlantDatas extends Component {
     // 获取病虫害的详情
     getPestsAndDiseasesDetail = (e) => {
         console.log(e)
-        ecoAxios.get(EcommerceUrl.pestsAndDiseaseDetailUrl + 'id=' + e).then((res,err) => {
-            if(res.data.status == 200) {
+        ecoAxios.get(EcommerceUrl.pestsAndDiseaseDetailUrl + 'id=' + e).then((res, err) => {
+            if (res.data.status == 200) {
                 console.log(res.data)
             }
         }).catch((err) => {
@@ -136,10 +147,10 @@ class PlantDatas extends Component {
                                     <span className="timeData">实时数据</span>
                                 </div>
                                 <div className="weather_thermometer">
-                                    <div className = 'myWeather'>
+                                    <div className='myWeather'>
                                         <Weather></Weather>
                                     </div>
-                                    
+
                                     <div className="myThermometer">
                                         <span>温度</span>
                                         <Thermometer
@@ -233,7 +244,7 @@ class PlantDatas extends Component {
                                 </div>
                                 <div className='history_result'>
                                     <LineChart chartId="history" lineChartHeight="400px" chartWidth="60%" chartHeight="400px" iconType="iconqushi" headerTitle="数据变化趋势图"></LineChart>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -284,7 +295,6 @@ class PlantDatas extends Component {
                         </div>
 
 
-
                         <div className={this.state.show === 'pestsAndDiseases' ? 'paneShow' : 'paneHide'}>
                             <div className='pestsAndDiseases_data'>
                                 <div className='pests_data'>
@@ -296,7 +306,7 @@ class PlantDatas extends Component {
                                         {
                                             this.state.pestsArray.map((pest, index) => {
                                                 return (
-                                                    <div key={pest.id} className='pestBox' onClick = {this.getPestsAndDiseasesDetail.bind(this, pest.id)}>
+                                                    <div key={pest.id} className='pestBox' onClick={this.getPestsAndDiseasesDetail.bind(this, pest.id)}>
                                                         <div className='pestImg'>
                                                             <img src={pest.pic}></img>
                                                         </div>
@@ -313,10 +323,64 @@ class PlantDatas extends Component {
                                         <div className='diving_line'></div>
                                     </div>
                                     <div className='diseases_content'>
-                                    {
+                                        {
                                             this.state.diseasesArray.map((pest, index) => {
                                                 return (
-                                                    <div key={pest.id} className='diseaseBox' onClick = {this.getPestsAndDiseasesDetail.bind(this,pest.id)}>
+                                                    <div key={pest.id} className='diseaseBox' onClick={this.getPestsAndDiseasesDetail.bind(this, pest.id)}>
+                                                        <div className='diseaseImg'>
+                                                            <img src={pest.pic}></img>
+                                                        </div>
+                                                        <span>{pest.name}</span>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={this.state.show === 'pestsAndDiseases_detail_data' ? 'paneShow' : 'paneHide'}>
+                            <div className='pestsAndDiseases_detail'>
+                                <div className='title'>
+                                    <span><IconFont type='iconbinghai'></IconFont>{}</span>
+                                    <div className='diving_line'></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={this.state.show === 'pestsAndDiseases' ? 'paneShow' : 'paneHide'}>
+                            <div className='pestsAndDiseases_data'>
+                                <div className='pests_data'>
+                                    <div className='pests_titie'>
+                                        <span><IconFont type='icon03030'></IconFont>常见虫害</span>
+                                        <div className='diving_line'></div>
+                                    </div>
+                                    <div className='pests_content'>
+                                        {
+                                            this.state.pestsArray.map((pest, index) => {
+                                                return (
+                                                    <div key={pest.id} className='pestBox' onClick={this.getPestsAndDiseasesDetail.bind(this, pest.id)}>
+                                                        <div className='pestImg'>
+                                                            <img src={pest.pic}></img>
+                                                        </div>
+                                                        <span>{pest.name}</span>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                                <div className='diseases_data'>
+                                    <div className='diseases_titie'>
+                                        <span><IconFont type='iconbinghai'></IconFont>常见病害</span>
+                                        <div className='diving_line'></div>
+                                    </div>
+                                    <div className='diseases_content'>
+                                        {
+                                            this.state.diseasesArray.map((pest, index) => {
+                                                return (
+                                                    <div key={pest.id} className='diseaseBox' onClick={this.getPestsAndDiseasesDetail.bind(this, pest.id)}>
                                                         <div className='diseaseImg'>
                                                             <img src={pest.pic}></img>
                                                         </div>
